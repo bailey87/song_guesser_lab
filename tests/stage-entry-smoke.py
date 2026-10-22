@@ -34,6 +34,11 @@ try:
             page.on('pageerror', lambda e: errors.append(str(e)))
             # External fonts are irrelevant; all audio under test is synthetic.
             page.route('https://**', lambda route: route.abort())
+            stale_requests=[]
+            def stale_module(route):
+                stale_requests.append(route.request.url)
+                route.fulfill(body='throw new Error("Stale unversioned module loaded");', content_type='application/javascript')
+            page.route('**/interference-options.js', stale_module)
             page.route('**/test-tone.wav*', lambda route: route.fulfill(body=tone, content_type='audio/wav'))
             page.goto(base + '/index.html' + suffix, wait_until='domcontentloaded')
             page.evaluate('''() => {
@@ -65,7 +70,23 @@ try:
                         return nativePlay.call(this);
                     };
                 }''')
+            if suffix == '?interference=1':
+                page.evaluate('''() => {
+                    const build=InterferenceOptions.build;let failOnce=true;
+                    InterferenceOptions.build=(...args)=>{
+                        if(failOnce){failOnce=false;throw new Error('Test question generation failure');}
+                        return build(...args);
+                    };
+                }''')
             page.locator('#btn-stage').click()
+            if suffix == '?interference=1':
+                page.locator('#btn-retry').wait_for(state='visible')
+                assert page.evaluate('G.roundPreparationFailed')
+                assert not page.locator('#screen-start').is_visible()
+                assert 'Test question generation failure' in page.locator('#load-txt').inner_text()
+                page.locator('#btn-retry').click()
+                print('PASS question-generation failure is visible and retry rebuilds the round', flush=True)
+            assert not stale_requests, 'Unversioned cached script must not be used'
             if suffix:
                 try:
                     page.locator('#btn-audio-retry').wait_for(state='visible', timeout=30000)

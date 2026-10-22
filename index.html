@@ -627,13 +627,13 @@ input[type=text]:focus{outline:0;border-bottom-color:var(--foam)}
   </div>
 </div>
 
-<script src="songs.js"></script>
-<script src="decoys.js"></script>
-<script src="previews.js"></script>
-<script src="song-rotation.js"></script>
-<script src="ghibli-themes.js"></script>
-<script src="interference-options.js"></script>
-<script src="dual-audio.js"></script>
+<script src="songs.js?v=20261023-stage-fix"></script>
+<script src="decoys.js?v=20261023-stage-fix"></script>
+<script src="previews.js?v=20261023-stage-fix"></script>
+<script src="song-rotation.js?v=20261023-stage-fix"></script>
+<script src="ghibli-themes.js?v=20261023-stage-fix"></script>
+<script src="interference-options.js?v=20261023-stage-fix"></script>
+<script src="dual-audio.js?v=20261023-stage-fix"></script>
 <script>
 /* Static single-player game. Audio streams from Apple; progress stays local. */
 
@@ -1003,7 +1003,7 @@ const G = {
   nickname: '',
   questions: [], index: 0, total: 0, log: [],
   mode: 'speed', stage: 1,
-  soundOk: false, timer: null, clip: null, deadline: 0, locked: false, audioPermissionBlocked: false
+  soundOk: false, timer: null, clip: null, deadline: 0, locked: false, audioPermissionBlocked: false, roundPreparationFailed: false
 };
 
 /* ---------- start screen ---------- */
@@ -1097,6 +1097,7 @@ async function loadFirst(){
   q.audio = undefined;                 // re-probe on retry
   $('load-spin').hidden = false;
   $('btn-retry').hidden = true;
+  $('btn-retry').textContent = '重試';
   $('load-txt').textContent = '正在準備第一首⋯';
 
   const t0 = Date.now();
@@ -1117,6 +1118,7 @@ async function loadFirst(){
 }
 
 $('btn-retry').addEventListener('click', async () => {
+  if(G.roundPreparationFailed){ await playRound(); return; }
   if(await loadFirst()){ show('screen-play'); nextQuestion(); }
 });
 
@@ -1141,6 +1143,12 @@ async function startGame(mode){
 /* One round: ten questions in speed mode, one stage in stage mode. The modes
    differ only in rules and song pool; loading, timing and scoring are shared. */
 async function playRound(){
+  show('screen-load');
+  G.roundPreparationFailed = false;
+  $('btn-retry').hidden = true;
+  $('load-spin').hidden = false;
+  $('load-txt').textContent = '正在建立題目⋯';
+  try{
   if(G.mode === 'stage'){
     const st = STAGES[G.stage - 1];
     Object.assign(R, { questionCount: STAGE_QUESTIONS, timeLimit: STAGE_SECONDS });
@@ -1154,6 +1162,14 @@ async function playRound(){
     $('goal').textContent = '';
   }
   $('hud-stage').hidden = G.mode !== 'stage';
+  }catch(error){
+    G.roundPreparationFailed = true;
+    $('load-spin').hidden = true;
+    $('load-txt').textContent = '無法建立題目，請重新整理網頁後再試（可能是版本快取或題庫未載入）。錯誤：' + error.message;
+    $('btn-retry').textContent = '重新產生題目';
+    $('btn-retry').hidden = false;
+    return;
+  }
   G.index = 0; G.total = 0; G.log = [];
 
   show('screen-load');
