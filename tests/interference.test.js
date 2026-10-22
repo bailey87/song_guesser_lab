@@ -56,3 +56,17 @@ test('late playback promise cannot restart audio after answer',async()=>{
   await clip.start();primary.currentTime=2.5;clip.checkProgress();clip.stop();finish();
   await new Promise(resolve=>setImmediate(resolve));assert(interference.paused);
 });
+test('ready audio starts within the retry click without an asynchronous readiness wait',async()=>{
+  const primary=media(),interference=media();
+  const clip=new DualAudioQuestion({primary,interference});
+  const start=clip.start();
+  assert.equal(primary.plays,1,'play() must be called before returning to the event loop');
+  await start;clip.stop();
+});
+test('autoplay permission errors retain their name for the retry UI',async()=>{
+  const primary=media(),interference=media();
+  primary.play=()=>Promise.reject(Object.assign(new Error('Blocked'),{name:'NotAllowedError'}));
+  const clip=new DualAudioQuestion({primary,interference});
+  await assert.rejects(clip.start(),{name:'NotAllowedError'});
+  clip.stop();assert(primary.paused && interference.paused);
+});

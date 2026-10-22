@@ -1003,7 +1003,7 @@ const G = {
   nickname: '',
   questions: [], index: 0, total: 0, log: [],
   mode: 'speed', stage: 1,
-  soundOk: false, timer: null, clip: null, deadline: 0, locked: false
+  soundOk: false, timer: null, clip: null, deadline: 0, locked: false, audioPermissionBlocked: false
 };
 
 /* ---------- start screen ---------- */
@@ -1196,15 +1196,8 @@ async function nextQuestion(){
     $('playmeta').textContent = '正在準備兩首音訊⋯';
     await Promise.all([prepareClip(q), prepareClip(q.interference)]);
     if(!q.audio || !q.interference.audio){ demoAudioFailure('兩首音源未載入完成，請重試本題'); return; }
-    G.clip = new DualAudioQuestion({
-      primary: q.audio.el, interference: q.interference.audio.el,
-      primaryOffset: q.audio.offset, interferenceOffset: q.interference.audio.offset, volume,
-      onInterference: () => { if(!G.locked) $('playmeta').textContent = '干擾音已加入 · 請選最先播放的歌曲'; },
-      onError: () => demoAudioFailure('干擾音無法播放，請重試本題')
-    });
-    try{ await G.clip.start(); }
-    catch(e){ demoAudioFailure('音訊無法開始播放，請重試本題'); return; }
-    $('playmeta').textContent = '請記住原曲 · 播放滿兩秒加入干擾';
+    await startDemoQuestion(q);
+    return;
   }else{
     if(q.audio === undefined) $('playmeta').textContent = '載入中⋯';
     await prepareClip(q);
@@ -1212,6 +1205,29 @@ async function nextQuestion(){
     G.clip = playClip(q);
   }
 
+  activateQuestion(q);
+}
+
+// Keep this call synchronous from the retry click: Brave can require a fresh
+// user gesture for HTMLMediaElement.play(), even after the Web Audio sound test.
+async function startDemoQuestion(q){
+  if(G.clip) G.clip.stop();
+  G.locked = true;
+  G.audioPermissionBlocked = false;
+  $('btn-audio-retry').hidden = true;
+  G.clip = new DualAudioQuestion({
+    primary: q.audio.el, interference: q.interference.audio.el,
+    primaryOffset: q.audio.offset, interferenceOffset: q.interference.audio.offset, volume,
+    onInterference: () => { if(!G.locked) $('playmeta').textContent = '干擾音已加入 · 請選最先播放的歌曲'; },
+    onError: error => demoAudioFailure('干擾音無法播放，請重試本題', error)
+  });
+  try{ await G.clip.start(); }
+  catch(error){ demoAudioFailure('音訊無法開始播放，請重試本題', error); return; }
+  $('playmeta').textContent = '請記住原曲 · 播放滿 2.5 秒加入干擾';
+  activateQuestion(q);
+}
+
+function activateQuestion(q){
   songRotation.record(q.song.id, window.SONGS);
   G.locked = false;
   G.deadline = performance.now() + R.timeLimit * 1000;
@@ -1225,15 +1241,25 @@ async function nextQuestion(){
   }
 }
 
-function demoAudioFailure(message){
+function demoAudioFailure(message, error){
   G.locked = true;
   cancelAnimationFrame(G.timer);
   if(G.clip) G.clip.stop();
-  $('playmeta').textContent = message;
+  G.audioPermissionBlocked = error?.name === 'NotAllowedError';
+  $('playmeta').textContent = G.audioPermissionBlocked
+    ? '瀏覽器阻擋音訊播放。請點「允許播放並重試」；若仍被阻擋，請在 Brave 的網站設定允許本站自動播放。'
+    : message;
+  $('btn-audio-retry').textContent = G.audioPermissionBlocked ? '允許播放並重試' : '重試音訊';
   $('btn-audio-retry').hidden = false;
 }
 $('btn-audio-retry').addEventListener('click', () => {
   const q = G.questions[G.index];
+  // Do not reload ready media on permission errors: loading again used to lose
+  // the click gesture and repeat the same autoplay rejection indefinitely.
+  if(G.audioPermissionBlocked && q.audio?.el.readyState >= 2 && q.interference?.audio?.el.readyState >= 2){
+    startDemoQuestion(q);
+    return;
+  }
   for(const track of [q, q.interference]){
     if(track?.audio?.el) track.audio.el.pause();
     if(track) track.audio = undefined;

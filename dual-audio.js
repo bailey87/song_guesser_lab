@@ -29,7 +29,10 @@
       this.primary.volume=this.volume;this.interference.volume=this.volume*this.ratio;
     }
     async start(){
-      await Promise.all([waitForData(this.primary),waitForData(this.interference)]);
+      // Ready media must reach play() in the retry button's user gesture.
+      if(this.primary.readyState < 2 || this.interference.readyState < 2){
+        await Promise.all([waitForData(this.primary),waitForData(this.interference)]);
+      }
       if(this.stopped) return;
       this.primary.currentTime=this.primaryOffset;
       this.interference.currentTime=this.interferenceOffset;
