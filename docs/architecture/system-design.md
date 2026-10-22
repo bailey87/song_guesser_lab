@@ -1,5 +1,7 @@
 # 系統與技術架構
 
+> 版本註記：本文分析原始版本 `b203a4b`。新版已移除歷史比較、改為全語系開放、加入跨場輪替，並擴充至 690 首；現行規則見 [專案 README](../../README.md)。下方程式連結固定指向原始版本，供對照。
+
 [返回導覽](README.md) · [遊戲流程](game-flow.md) · [檔案對照](file-map.md) · [改造建議](modification-roadmap.md)
 
 ## 1. 系統責任與執行位置
@@ -145,12 +147,12 @@ sessionStorage 通常隨分頁工作階段結束而清除，但瀏覽器還原�
 
 ## 7. 歷史排行榜的實際設計
 
-依 [sql/leaderboard.sql](../../sql/leaderboard.sql)，`scores` 保存 UUID、暱稱、分數、答對數、裝置 ID、建立時間與 hidden。CHECK 約束限制 0–10,000 分、0–10 題及「答對數 × 300 ≤ 分數 ≤ 答對數 × 1,000」。觸發器用 `device_id` 查 20 秒內是否已有提交；`leaderboard` view 從未隱藏紀錄中以 `distinct on (device_id)` 取最佳，分數相同採較早時間。複合索引用來支援這個查詢。
+依 [sql/leaderboard.sql](https://github.com/bailey87/song_guesser_lab/blob/b203a4b3d42b8f7867f2551b2a1cd0eeb7e5c1f2/sql/leaderboard.sql)，`scores` 保存 UUID、暱稱、分數、答對數、裝置 ID、建立時間與 hidden。CHECK 約束限制 0–10,000 分、0–10 題及「答對數 × 300 ≤ 分數 ≤ 答對數 × 1,000」。觸發器用 `device_id` 查 20 秒內是否已有提交；`leaderboard` view 從未隱藏紀錄中以 `distinct on (device_id)` 取最佳，分數相同採較早時間。複合索引用來支援這個查詢。
 
 RLS（Row Level Security）可類比資料列層級 ACL，但必須閱讀條件：此版本允許 `anon`、`authenticated` 任意讀取與插入，允許所有 `authenticated` 更新及刪除；沒有獨立 staff 身分判斷。公開 anon key 是設計用途，不是管理密鑰。真正風險是政策過寬、Auth 帳號發放方式及對用戶資料的公開讀取，詳見[資安與改造](modification-roadmap.md)。不能由 repo 的 SQL 證明遠端目前已套用相同政策。
 
 `staff.html` 不用 Supabase SDK，直接以 `fetch` 呼叫 REST，先讀取全表再本機搜尋／排序／選取各裝置最高分。每頁 1,000 筆、最多 60 頁，畫面最多顯示 300 列。它以 `created_at > 前頁最後時間` 作游標；時間相同且跨頁邊界的資料可能漏掉，且沒有截斷警示。更新以 `return=representation` 檢查回傳資料，避免把 RLS 過濾後的空結果誤認成功。
 
-[sql/prune.sql](../../sql/prune.sql) 先依台北日期累積每日總次數及裝置數，再刪除超過一小時、非 hidden、非裝置最佳的歷史列，最後移除舊索引。這是有破壞性的維運 SQL，非啟動腳本；文件分析不需要實際執行。`greatest()` 保留歷次觀測的最大日統計值，但刪除後再新增的資料不保證能還原精確的終身累積計數。
+[sql/prune.sql](https://github.com/bailey87/song_guesser_lab/blob/b203a4b3d42b8f7867f2551b2a1cd0eeb7e5c1f2/sql/prune.sql) 先依台北日期累積每日總次數及裝置數，再刪除超過一小時、非 hidden、非裝置最佳的歷史列，最後移除舊索引。這是有破壞性的維運 SQL，非啟動腳本；文件分析不需要實際執行。`greatest()` 保留歷次觀測的最大日統計值，但刪除後再新增的資料不保證能還原精確的終身累積計數。
 
 README 與註解把改採靜態榜歸因於歷史 egress 與容量壓力；那些免費方案配額是專案當時的背景描述，不能視為目前 Supabase 的方案承諾。架構上的重點是把大量重複讀取轉為可快取靜態快照，代價是排名不再即時更新。

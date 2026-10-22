@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#0B0C18">
-<title>金曲猜歌王 · NTUPM 18th</title>
+<title>金曲猜歌王 · Song Guesser Lab</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700;900&display=swap">
@@ -316,7 +316,7 @@ input[type=text]:focus{outline:0;border-bottom-color:var(--foam)}
 }
 .scorecard .meta{font-size:var(--t-small);color:var(--dim);font-weight:var(--w-quiet)}
 
-/* points to the next crew member — the best reason to replay, so give it colour */
+/* Personal-record and retry hints. */
 .scorecard .next{
   margin-top:var(--s3);font-size:var(--t-small);line-height:1.8;
   color:var(--dim);font-weight:var(--w-quiet);
@@ -481,36 +481,6 @@ input[type=text]:focus{outline:0;border-bottom-color:var(--foam)}
 .pop.clear .pop-card{box-shadow:inset 0 0 0 1px var(--bottle), 0 18px 48px rgba(0,0,0,.5)}
 .pop.clear .pop-card .big{font-size:var(--t-h1)}
 
-/* ═══════════ CREW BOARD ═══════════ */
-/* The crew board is 56 rows, always taller than one screen. Pin this screen
-   to the viewport so the heading, the summary and the back button stay put
-   and only the list scrolls — otherwise the whole page scrolls and the back
-   button disappears mid-swipe. */
-#screen-board{gap:var(--s4);height:100vh;height:100dvh}
-.board-head{padding:var(--s2) 0 var(--s3)}
-.board-head h2{margin:var(--s1) 0 0;font-weight:var(--w-title);font-size:var(--t-h2);color:var(--foam)}
-.board-list{flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column}
-.rowitem{
-  display:grid;grid-template-columns:2rem 1fr auto;gap:var(--s4);align-items:baseline;
-  padding:var(--s3) 0;border-top:1px solid var(--line);
-}
-.rowitem .rk{font-weight:var(--w-strong);font-size:var(--t-h3);color:var(--dim);font-variant-numeric:tabular-nums}
-.rowitem .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:var(--w-item)}
-.rowitem .sc{color:var(--dim);font-variant-numeric:tabular-nums}
-.rowitem.top1 .rk,.rowitem.top2 .rk,.rowitem.top3 .rk{color:var(--bottle)}
-.rowitem.me{box-shadow:inset 3px 0 0 var(--foam);padding-left:var(--s3)}
-.rowitem.me .sc{color:var(--bottle)}
-.board-note{margin-top:var(--s2);font-size:var(--t-small);color:var(--dim);line-height:1.7}
-.board-note b{color:var(--bottle);font-weight:var(--w-item)}
-/* pinned row for yourself when you are outside the visible range */
-/* already beaten: dim the whole row so the ones left stand out */
-.rowitem.beaten{opacity:.45}
-.rowitem .nm .tag{
-  margin-left:var(--s2);font-size:var(--t-small);font-weight:var(--w-quiet);
-  color:var(--dim);letter-spacing:.05em;
-}
-.rowitem.me .nm .tag{color:var(--bottle)}
-.rowitem.me .rk{color:var(--foam);font-size:var(--t-body)}
 .fielderr{margin-top:var(--s2);font-size:var(--t-small);color:var(--miss);font-weight:var(--w-item)}
 .empty{color:var(--dim);font-size:var(--t-small);padding:var(--s7) 0;line-height:2.1}
 .empty b{display:block;color:var(--foam);font-weight:var(--w-title);font-size:var(--t-h3);margin-bottom:var(--s4)}
@@ -529,9 +499,9 @@ input[type=text]:focus{outline:0;border-bottom-color:var(--foam)}
 <!-- ═══════════ START ═══════════ -->
 <div class="screen" id="screen-start">
   <div class="brand">
-    <div class="eyebrow">台大流唱社</div>
+    <div class="eyebrow">SONG GUESSER LAB</div>
     <h1>金曲猜歌王</h1>
-    <div class="slogan">我們不一定最會唱歌<br>但我們一定最會猜歌</div>
+    <div class="slogan">全語系開放・每回合十題<br>優先抽未玩過的歌，挑戰你的耳朵</div>
   </div>
 
   <div class="rule"></div>
@@ -577,18 +547,7 @@ input[type=text]:focus{outline:0;border-bottom-color:var(--foam)}
     </button>
   </div>
 
-  <div class="startfoot">
-    <a href="https://www.instagram.com/ntupm__18th" target="_blank" rel="noopener" aria-label="Instagram @ntupm__18th">
-      <svg class="ig" viewBox="0 0 24 24" aria-hidden="true">
-        <rect x="3" y="3" width="18" height="18" rx="5"/>
-        <circle cx="12" cy="12" r="4"/>
-        <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/>
-      </svg>
-      <span class="handle">ntupm__18th</span>
-    </a>
-    <button type="button" id="btn-board-1">幹部榜</button>
-  </div>
-  <div class="credit">音源:Apple Music 官方試聽</div>
+  <div class="credit" id="library-info"></div><div class="credit">音源：Apple Music 官方試聽</div>
 </div>
 
 <!-- ═══════════ LOADING ═══════════ -->
@@ -645,7 +604,7 @@ input[type=text]:focus{outline:0;border-bottom-color:var(--foam)}
   </div>
   <div class="misses" id="res-misses"></div>
   <div class="row">
-    <button class="btn ghost" id="btn-board-2">幹部榜</button>
+    <button class="btn ghost" id="btn-home">回首頁</button>
     <button class="btn" id="btn-again">再玩一次</button>
   </div>
   <button class="btn ghost share" id="btn-share">
@@ -655,27 +614,6 @@ input[type=text]:focus{outline:0;border-bottom-color:var(--foam)}
     </svg>
     <span>分享成績</span>
   </button>
-  <!-- What the game is actually for: getting people to the welcome session.
-       Sits between the buttons and the IG link — their score above, the
-       follow link below, and the card's last line points at that handle. -->
-  <section class="promo" aria-label="台大流唱迎新社課">
-    <h3 class="tag">台大流唱迎新社課</h3>
-    <ul>
-      <li><b class="d">9/16</b><span class="t"><i>週三</i>19:00</span><span class="p">共同 101</span></li>
-      <li><b class="d">9/17</b><span class="t"><i>週四</i>19:00</span><span class="p">共同 301</span></li>
-    </ul>
-    <p class="note">欲知更多資訊,請追蹤下面的 IG</p>
-  </section>
-  <div class="startfoot">
-    <a href="https://www.instagram.com/ntupm__18th" target="_blank" rel="noopener" aria-label="Instagram @ntupm__18th">
-      <svg class="ig" viewBox="0 0 24 24" aria-hidden="true">
-        <rect x="3" y="3" width="18" height="18" rx="5"/>
-        <circle cx="12" cy="12" r="4"/>
-        <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/>
-      </svg>
-      <span class="handle">ntupm__18th</span>
-    </a>
-  </div>
 </div>
 
 <!-- ═══════════ STAGE MODE: clear popup ═══════════
@@ -692,33 +630,17 @@ input[type=text]:focus{outline:0;border-bottom-color:var(--foam)}
   </div>
 </div>
 
-<!-- ═══════════ CREW BOARD ═══════════ -->
-<div class="screen" id="screen-board" hidden>
-  <div class="board-head">
-    <h2>流唱社幹部榜</h2>
-    <div class="board-note" id="board-note"></div>
-  </div>
-  <div class="board-list" id="board-list"></div>
-  <button class="btn ghost" id="btn-back">返回</button>
-</div>
 <script src="songs.js"></script>
 <script src="decoys.js"></script>
 <script src="previews.js"></script>
-<script src="crew.js"></script>
+<script src="song-rotation.js"></script>
 <script>
-/* ═══════════════════════════════════════════════════════
-   Fully offline: song bank, decoys, preview URLs, crew board and the score
-   distribution are all static files. Scores live only on the player's phone.
-   ═══════════════════════════════════════════════════════ */
+/* Static single-player game. Audio streams from Apple; progress stays local. */
 
 const CONFIG = {
   questionCount: 10,      // questions per round
-  /* Per-round floor. A key may name one genre or a group joined with '+',
-     in which case the draw comes from that group as a pool — so the last
-     entry guarantees one non-Chinese song without guaranteeing a language.
-     Remaining slots are filled from the whole bank, so any of these can and
-     often does come up more than its floor. */
-  floor: { mando: 5, classic: 1, tw: 1, 'kpop+west+jp': 1 },
+  // Every category is available from the first round.
+  floor: { mando: 1, classic: 1, tw: 1, west: 1, kpop: 1, jp: 1 },
   optionCount: 9,
   timeLimit: 12,          // seconds per question
   baseScore: 300,         // points for a correct answer
@@ -729,67 +651,19 @@ const CONFIG = {
 };
 
 const $ = id => document.getElementById(id);
-/* ---------- Stage table ----------
-
-   Difficulty comes from two things stacking: a bigger pool (and a more
-   obscure one further in), and a higher threshold. The clock stays at 12s,
-   same as speed mode — that keeps the two modes' scores comparable, and it
-   means players feel the questions getting harder rather than suspecting
-   they were quietly sped up.
-
-   Ten questions per stage, 10,000 max, scored per stage. Fail and you
-   restart from stage 1.
-
-   `unlocked` is what opens up on entering that stage; it is announced on the
-   previous stage's clear popup. Players have to see what they unlocked, or a
-   bigger pool just reads as "harder".
-
-   `floor` guarantees the unlock shows up. Widening the pool is not enough on
-   its own — adding 30 Taiwanese songs to 260 Mandarin ones means a
-   ten-question round often contains none, and the unlock the player was just
-   shown never arrives. So once a language is unlocked it is guaranteed at
-   least one question from then on:
-
-     stage 2+   tw 1
-     stage 3+   tw 1, west 1
-     stage 4+   tw 1, west 1, kpop or jp 1
-
-   Korean and Japanese share a floor because they unlock together. */
+/* ---------- Stage table: the full library is open at every level ---------- */
 const STAGE_SECONDS = 12;
 const STAGE_QUESTIONS = 10;
-const ALL_GENRES = ['mando','classic','tw','west','kpop','jp'];
-
-const STAGES = [
-  { need: 4000, genres: ['mando','classic'] },
-  { need: 5000, genres: ['mando','classic','tw'],        unlocked: '台語',
-    floor: { tw: 1 } },
-  { need: 6000, genres: ['mando','classic','tw','west'], unlocked: '西洋',
-    floor: { tw: 1, west: 1 } },
-  { need: 7000, genres: ALL_GENRES,                      unlocked: '韓文 · 日文',
-    floor: { tw: 1, west: 1, 'kpop+jp': 1 } },
-  { need: 8000, genres: ALL_GENRES, floor: { tw: 1, west: 1, 'kpop+jp': 1 } },
-  { need: 9000, genres: ALL_GENRES, floor: { tw: 1, west: 1, 'kpop+jp': 1 } }
-];
-
-/* The line pinned at the top during play: which stage, what is unlocked so
-   far. A growing pool is the only reward this mode gives and it is
-   invisible — unwritten, it just reads as "suddenly songs I don't know". */
-function stageHudLabel(n){
-  // once everything is open, stop listing genres — the line is one row and would be clipped
-  if(stagePool(n).length >= (window.SONGS || []).length) return '全曲庫開放';
-  const got = STAGES.slice(0, n).map(st => st.unlocked).filter(Boolean);
-  return got.length ? '已解鎖 ' + got.join(' · ') : '華語現代 · 經典';
-}
-
-function stagePool(n){
-  const g = STAGES[n - 1].genres;
-  return (window.SONGS || []).filter(s => g.includes(s.genre));
-}
+const STAGES = [4000, 5000, 6000, 7000, 8000, 9000].map(need => ({
+  need, floor: CONFIG.floor
+}));
+function stageHudLabel(){ return '全語系開放'; }
+function stagePool(){ return window.SONGS || []; }
 
 // Rules for the current round, filled in per mode. The game loop reads this, not CONFIG.
 const R = { questionCount: CONFIG.questionCount, timeLimit: CONFIG.timeLimit };
 
-const SCREENS = ['screen-start','screen-load','screen-play','screen-result','screen-board'];
+const SCREENS = ['screen-start','screen-load','screen-play','screen-result'];
 function show(id){
   SCREENS.forEach(s => $(s).hidden = (s !== id));
   document.body.classList.toggle('dim', id === 'screen-play');
@@ -974,56 +848,9 @@ function playClip(q){
   return synthClip(q.song, CONFIG.clipSeconds);
 }
 
-/* ---------- Scores and crew board ----------
-
-   This used to be a live Supabase leaderboard. It fell over once the game
-   spread online: the free tier gives 5GB of egress a month and we were
-   burning 1.5GB a day, nearly all of it reads — thousands of people
-   refreshing the same board.
-
-   It is now two static tables (crew.js):
-
-     CREW        the 46 scores the club set on the two days before the fair
-     SCORE_DIST  score distribution of 13,191 players, 250-point buckets
-
-   Players lost very little. Rank 1,240 out of eight thousand means nothing;
-   "you beat 23 of the club, 89 points short of 兮兮" means something — and
-   it costs zero requests. */
-
-const CREW = (window.CREW || []).slice().sort((a, b) => b.score - a.score);
-
-/* How many players you beat. SCORE_DIST is a cumulative count in 250-point
-   buckets, interpolated in between — the answer wanted is "roughly what
-   fraction", not an exact headcount. */
-function beatCount(score){
-  const d = window.SCORE_DIST || [];
-  if(!d.length) return 0;
-  if(score <= d[0][0]) return d[0][1];
-  if(score >= d[d.length - 1][0]) return d[d.length - 1][1];
-  for(let i = 0; i < d.length - 1; i++){
-    const [s0, n0] = d[i], [s1, n1] = d[i + 1];
-    if(score >= s0 && score <= s1) return n0 + (n1 - n0) * (score - s0) / (s1 - s0);
-  }
-  return d[d.length - 1][1];
-}
-
-function beatPercent(score){
-  return window.CREW_TOTAL ? Math.round(beatCount(score) / window.CREW_TOTAL * 100) : 0;
-}
-
-// beaten = strictly higher. A tie is not a win.
-function crewBeaten(score){ return CREW.filter(c => score > c.score).length; }
-
-// next target: the lowest scorer you have not passed
-function crewNext(score){
-  for(let i = CREW.length - 1; i >= 0; i--) if(CREW[i].score >= score) return CREW[i];
-  return null;
-}
-
-/* Scores live on this phone only. Kept for "your best" and for your row on
-   the crew board — with no server, this is the player's only record. */
+/* ---------- Personal records (local device only) ---------- */
 const Store = {
-  KEY: 'pmsg_scores_v1',
+  KEY: 'pmsg_scores_full_library_v2',
 
   all(){
     try{ return JSON.parse(localStorage.getItem(this.KEY)) || []; }
@@ -1037,18 +864,14 @@ const Store = {
     try{ localStorage.setItem(this.KEY, JSON.stringify(list.slice(-50))); }catch(e){}
   },
 
-  /* "Your best" and your row on the crew board only count speed mode. A stage
-     score is not comparable — stage 1 draws from 260 Mandarin songs, far
-     easier than the full bank, so putting it on the crew board would be
-     cheating. Old entries have no `mode` field (saved before stage mode
-     existed) and count as speed. */
+  // Personal speed-mode best; stage scores use their own progression.
   best(){
     return this.all().reduce((m, r) => r.mode === 'stage' ? m : Math.max(m, r.score || 0), 0);
   },
   plays(){ return this.all().length; },
 
   // stage-mode record: only ever goes up
-  STAGE_KEY: 'pmsg_stage_v1',
+  STAGE_KEY: 'pmsg_stage_full_library_v2',
   bestStage(){
     try{ return Number(localStorage.getItem(this.STAGE_KEY)) || 0; }catch(e){ return 0; }
   },
@@ -1089,31 +912,12 @@ function optionPool(){
   return (window.SONGS || []).concat(window.DECOYS || []);
 }
 
-/* songs  pool for this round (stage mode passes only the unlocked genres)
-   floor  minimum questions per genre. A key may be one genre ('tw') or a
-          group ('kpop+jp'), in which case the draw comes from that group as
-          a pool. Floors are applied in order and never reuse a song, so
-          { west: 1, 'kpop+jp': 1 } yields two different non-Chinese songs.
-
-   Speed mode wants a spread across the whole bank; stage mode wants whatever
-   it just unlocked to actually turn up. */
+/* Both modes use the full library and the same category floors.
+   Persistent rotation prefers unseen songs, then least-recently-played. */
 function buildQuestions(songs, floor){
   songs = songs || window.SONGS || [];
 
-  const picked = [];
-  const take = (list, n) => {
-    if(n <= 0) return;
-    picked.push(...shuffle(list.filter(s => !picked.includes(s))).slice(0, n));
-  };
-
-  // floors first, then whatever is left is filled at random
-  for(const [key, n] of Object.entries(floor || {})){
-    const want = key.split('+');
-    take(songs.filter(s => want.includes(s.genre)), n);
-  }
-  // free fill. Also how a genre too short to meet its floor gets topped up.
-  take(songs, R.questionCount - picked.length);
-  const answers = shuffle(picked);   // shuffle the order too, or every round runs through genres the same way
+  const answers = shuffle(songRotation.draw(songs, R.questionCount, floor));
 
   const pool = optionPool();
   let lastIndex = -1;
@@ -1157,6 +961,8 @@ function buildQuestions(songs, floor){
     return { song: answer, options: grid };
   });
 }
+
+const songRotation = new SongRotation();
 
 /* ---------- game state ---------- */
 const G = {
@@ -1245,10 +1051,7 @@ $('btn-speed').addEventListener('click', () => startGame('speed'));
 $('btn-stage').addEventListener('click', () => startGame('stage'));
 $('btn-again').addEventListener('click', () =>
   G.mode === 'stage' ? startGame('stage') : show('screen-start'));
-$('btn-board-1').addEventListener('click', () => renderBoard(true));
-$('btn-board-2').addEventListener('click', () =>
-  G.mode === 'stage' ? show('screen-start') : renderBoard(true));
-$('btn-back').addEventListener('click', () => show('screen-start'));
+$('btn-home').addEventListener('click', () => show('screen-start'));
 
 /* ---------- starting a round ---------- */
 
@@ -1294,7 +1097,7 @@ async function startGame(mode){
   if(err){ showNickError(err); return; }
   showNickError('');
 
-  // no shared board, so no name clashes; the nickname stays on this phone
+  // The nickname and personal results stay on this device.
   G.nickname = $('nick').value.trim();
   G.mode = mode;
   G.stage = 1;
@@ -1360,6 +1163,7 @@ async function nextQuestion(){
   if(G.clip) G.clip.stop();
   G.clip = playClip(q);
 
+  songRotation.record(q.song.id, window.SONGS);
   G.locked = false;
   G.deadline = performance.now() + R.timeLimit * 1000;
   tick();
@@ -1435,11 +1239,11 @@ function answer(opt, index){
    min: 0 — that is the catch-all. */
 
 const TITLES = [
-  { min: 8000, title: '流唱社之光',   line: '拜託你來我們流唱社當教學啦！' },
-  { min: 6767, title: '金曲點唱機',   line: '來流唱社你一定會找到很多志同道合喜歡聽歌的朋友！' },
-  { min: 5000, title: '移動 KTV',   line: '就差那麼一點點，要不要來參加流唱社！' },
-  { min: 3000, title: '持續聽歌中',    line: '來流唱社一定會大大增加你的曲庫~~' },
-  { min: 0,    title: '聽歌小萌新',     line: '沒關係,來流唱社聽一年就會了' },
+  { min: 8000, title: '猜歌之王', line: '耳朵就是你的超能力！' },
+  { min: 6767, title: '金曲點唱機', line: '你的歌單一定很精彩！' },
+  { min: 5000, title: '移動 KTV', line: '再快一點，就能更上一層樓！' },
+  { min: 3000, title: '持續聽歌中', line: '再挑戰一次，發現更多好歌！' },
+  { min: 0, title: '聽歌小萌新', line: '每一首都是認識新音樂的機會！' }
 ];
 
 function titleFor(score){
@@ -1458,7 +1262,6 @@ function finish(){
   };
   const prevBest = Store.best();
   Store.save(entry);
-  $('btn-board-2').textContent = '幹部榜';
   $('btn-again').textContent   = '再玩一次';
 
   const rank = titleFor(G.total);
@@ -1466,38 +1269,18 @@ function finish(){
   $('res-line').textContent  = rank.line;
   $('res-score').textContent = G.total.toLocaleString();
 
-  /* Both numbers computed on the phone:
-       crew beaten    — named opponents read better than an abstract rank
-       percent beaten — everyone gets a number, so nobody sees a bare zero */
-  const beaten = crewBeaten(G.total);
-  G.shareText = `我在台大流唱社的金曲猜歌王挑戰中獲得了 ${G.total.toLocaleString()} 分，得到「${rank.title}」的稱號。
-` +
-    `我擊敗了 ${beaten}/${CREW.length} 位流唱社幹部，贏過了 ${beatPercent(G.total)}% 的玩家。你也來挑戰看看吧！`;
-  $('res-meta').textContent =
-    `答對 ${entry.correct} 題,共 ${R.questionCount} 題` +
-    ` · 擊敗 ${beaten}/${CREW.length} 位幹部` +
-    ` · 贏過 ${beatPercent(G.total)}% 的玩家`;
-
-  // one more push to pass someone: the best reason to replay
-  const next = crewNext(G.total);
+  G.shareText = `我在金曲猜歌王獲得了 ${G.total.toLocaleString()} 分，答對 ${entry.correct}/${R.questionCount} 題，得到「${rank.title}」！你也來挑戰看看吧！`;
+  $('res-meta').textContent = `答對 ${entry.correct} 題,共 ${R.questionCount} 題`;
   const nextEl = $('res-next');
-  if(next){
-    const gap = next.score - G.total + 1;
-    nextEl.innerHTML = `再 <b>${gap.toLocaleString()}</b> 分就能贏過 <b>${escapeHtml(next.name)}</b>`;
-  }else{
-    nextEl.innerHTML = `<b>五十五位幹部全部擊敗</b> —— 沒有人在你前面了`;
-  }
-  nextEl.hidden = false;
-
-  if(prevBest && G.total > prevBest){
-    nextEl.innerHTML += `<br>這支手機的新紀錄(上次最好 ${prevBest.toLocaleString()} 分)`;
-  }
+  nextEl.textContent = prevBest && G.total > prevBest
+    ? `這支裝置的新紀錄（上次最好 ${prevBest.toLocaleString()} 分）` : '';
+  nextEl.hidden = !nextEl.textContent;
 
   // the ones they missed
   const missed = G.log.filter(r => !r.correct);
   $('res-misses').innerHTML = missed.length
     ? `<h4>沒答出來的</h4><ul>${missed.map(r =>
-        `<li><b>${r.song.title}</b><span>${r.song.artist}</span></li>`).join('')}</ul>`
+        `<li><b>${escapeHtml(r.song.title)}</b><span>${escapeHtml(r.song.artist)}</span></li>`).join('')}</ul>`
     : `<h4>全對</h4><div class="none">十題全中,一首都沒漏</div>`;
 
   show('screen-result');
@@ -1511,12 +1294,7 @@ function stageFacts(st, passed){
   ];
   const next = STAGES[G.stage];
   if(passed && next){
-    if(next.unlocked){
-      const before = stagePool(G.stage).length, after = stagePool(G.stage + 1).length;
-      rows.push([`解鎖`, `${next.unlocked} ${after - before} 首 · 曲庫 ${before} → ${after}`, true]);
-    }else{
-      rows.push([`曲庫`, `${stagePool(G.stage + 1).length} 首,已經全開`, true]);
-    }
+    rows.push([`曲庫`, `${stagePool().length} 首 · 全語系開放`, true]);
     rows.push([`第 ${G.stage + 1} 關`, `要 ${next.need.toLocaleString()} 分`, false]);
   }
   return rows.map(([k, v, hot]) =>
@@ -1537,14 +1315,14 @@ function finishStage(){
   pop.classList.toggle('clear', last);
   $('st-tag').textContent  = last ? '全部破關' : `第 ${G.stage} 關 通過`;
   $('st-big').textContent  = last ? '六關全破'
-    : (STAGES[G.stage].unlocked ? `解鎖 ${STAGES[G.stage].unlocked}` : `前往第 ${G.stage + 1} 關`);
+    : `前往第 ${G.stage + 1} 關`;
   // a hard-coded count goes stale every time songs are added
   $('st-line').textContent = last
     ? `整個題庫 ${(window.SONGS || []).length} 首、六道門檻,你一關都沒有掉。` : '';
   $('st-facts').innerHTML  = stageFacts(st, true);
   // clearing all six is the moment worth sharing, so that slot becomes share
   G.shareText = last
-    ? `我在台大流唱社的金曲猜歌王挑戰中六關全破囉。你也來試試看吧！`
+    ? `我在金曲猜歌王挑戰中六關全破囉。你也來試試看吧！`
     : G.shareText;
   $('btn-stage-go').hidden = false;
   $('btn-stage-go').textContent = last ? '分享這個成績' : `進入第 ${G.stage + 1} 關`;
@@ -1568,28 +1346,23 @@ function closePop(){
    got rather than the score — "I reached stage 3" is the line people share. */
 function failStage(st){
   closePop();
-  /* The two buttons mean different things per mode. The crew board compares
-     speed-mode scores, so a single stage's score has nothing to compare
-     against — stage mode gets "home" instead, and "play again" restarts
-     from stage 1. */
-  $('btn-board-2').textContent = '回首頁';
   $('btn-again').textContent   = '再闖一次';
   const cleared = G.stage - 1;
   const gap = st.need - G.total;
   $('res-title').textContent = cleared > 0 ? `闖到第 ${cleared} 關` : '第 1 關就卡住了';
   $('res-line').textContent  = cleared > 0
     ? `倒在第 ${G.stage} 關的 ${st.need.toLocaleString()} 分門檻前`
-    : '第一關只考華語,再來一次一定過得了';
+    : '全語系從第一關開放，再試一次！';
   $('res-score').textContent = G.total.toLocaleString();
   $('res-meta').textContent  =
     `第 ${G.stage} 關要 ${st.need.toLocaleString()} 分 · 差 ${gap.toLocaleString()} 分` +
     ` · 最佳紀錄 第 ${Store.bestStage()} 關`;
 
   G.shareText = cleared > 0
-    ? `我在台大流唱社的金曲猜歌王挑戰中闖到第 ${cleared} 關(共 ${STAGES.length} 關)
+    ? `我在金曲猜歌王挑戰中闖到第 ${cleared} 關(共 ${STAGES.length} 關)
 ` +
       `倒在第 ${G.stage} 關的 ${st.need.toLocaleString()} 分門檻前。你也來挑戰看看吧！`
-    : `我在台大流唱社的金曲猜歌王挑戰中連第 1 關都沒過，不然你來玩玩看吧！`;
+    : `我在金曲猜歌王挑戰中連第 1 關都沒過，不然你來玩玩看吧！`;
 
   const nextEl = $('res-next');
   nextEl.innerHTML = `再玩一次會<b>從第 1 關重新開始</b>`;
@@ -1598,7 +1371,7 @@ function failStage(st){
   const missed = G.log.filter(r => !r.correct);
   $('res-misses').innerHTML = missed.length
     ? `<h4>沒答出來的</h4><ul>${missed.map(r =>
-        `<li><b>${r.song.title}</b><span>${r.song.artist}</span></li>`).join('')}</ul>`
+        `<li><b>${escapeHtml(r.song.title)}</b><span>${escapeHtml(r.song.artist)}</span></li>`).join('')}</ul>`
     : `<h4>全對</h4><div class="none">十題全中,但門檻是看分數的 —— 再快一點</div>`;
 
   show('screen-result');
@@ -1661,55 +1434,6 @@ async function doShare(){
 
 $('btn-share').addEventListener('click', doShare);
 
-/* ---------- crew board ---------- */
-
-function crewRowHtml(r){
-  const cls = ['rowitem'];
-  if(r.me) cls.push('me');
-  if(r.beaten) cls.push('beaten');
-  if(typeof r.rank === 'number' && r.rank <= 3) cls.push('top' + r.rank);   // gild the top three
-  return `<div class="${cls.join(' ')}">
-      <div class="rk">${r.rank}</div>
-      <div class="nm">${escapeHtml(r.name)}${r.tag ? `<span class="tag">${r.tag}</span>` : ''}</div>
-      <div class="sc">${r.score.toLocaleString()}</div>
-    </div>`;
-}
-
-/* Whole board at once — 46 rows will not choke anything — with your own row
-   spliced in at its position, scrolled into view on open. The first thing a
-   player looks for is where they are, not who is first. */
-function renderBoard(){
-  show('screen-board');
-  const list = $('board-list'), note = $('board-note');
-  const best = Store.best();
-  const beaten = crewBeaten(best);
-
-  const rows = CREW.map((c, i) => ({
-    rank: i + 1, name: c.name, score: c.score,
-    beaten: best > c.score,
-    tag: best > c.score ? '已擊敗' : ''
-  }));
-
-  if(best > 0){
-    const at = rows.filter(r => r.score >= best).length;
-    rows.splice(at, 0, {
-      rank: '你', name: G.nickname || '你的最佳成績', score: best, me: true,
-      tag: `擊敗 ${beaten} 位`
-    });
-  }
-
-  list.innerHTML = rows.map(crewRowHtml).join('');
-
-  note.innerHTML = best > 0
-    ? `你的最佳 <b>${best.toLocaleString()}</b> 分 —— 擊敗 <b>${beaten}</b> / ${CREW.length} 位幹部;` +
-      `在所有玩家裡,你贏過了 <b>${beatPercent(best)}%</b> 的玩家。`
-    : `社團的 ${CREW.length} 個幹部自己先玩了一輪。來挑戰流唱社看你能擊敗幾個人吧！`;
-
-  // scroll the list itself; scrollIntoView would scroll the page and push the heading off
-  const meRow = list.querySelector('.rowitem.me');
-  if(meRow) list.scrollTop = meRow.offsetTop - list.clientHeight / 2 + meRow.offsetHeight / 2;
-}
-
 function escapeHtml(s){
   return String(s).replace(/[&<>"']/g, c =>
     ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -1728,6 +1452,7 @@ document.addEventListener('keydown', e => {
 /* ---------- boot ---------- */
 setVolume(volume);   // apply the remembered volume to the slider and icon
 refreshStartBtn();
+$('library-info').textContent = `${window.SONGS.length} 首歌曲 · 全語系開放 · 此裝置跨場避重`;
 </script>
 </body>
 </html>

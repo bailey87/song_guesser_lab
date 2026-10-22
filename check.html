@@ -219,27 +219,8 @@ const SONGS = window.SONGS || [];
 const PREV  = window.SONG_PREVIEWS || {};
 const KEY   = 'pm-songguesser-audio-check';
 
-/* ---------- This batch ----------
-   2026-09-13: 50 songs added to the bank (340 -> 390), picked out of
-   decoys.js. Only the ones whose store metadata disagrees land in "needs
-   checking", but new songs still have to be heard, so they get their own
-   filter and it is the default while the list is non-empty.
-   Once this batch is reviewed, empty NEW_IDS and the filter disappears. */
-const NEW_IDS = new Set([
-  "gejian", "houlaidewomen", "aizheaizhejiuyongyuan", "douquan",
-  "rangwoliuzainishenbian", "jifenzhiji", "dangwomenyiqizouguo", "gesongzhe",
-  "wobunanguo", "madelibusiyi", "tianwailaiwu", "shiluoshazhou",
-  "yuai", "redaiyulin", "aidezhudage", "aicuo",
-  "aiwohaishita", "lettinggo", "yuandian", "xiaobuwuqu",
-  "yishidemeihao", "kuailechongbai", "wozhizaihuni", "kafei",
-  "ruyuan", "yinweiaiqing", "ruguoniyetingshuo", "bugai",
-  "youmeiyouyishouge", "kuailetiantang", "manleng", "diyici",
-  "shaonian", "quekou", "geainiyibai", "xiabeizi",
-  "leiqiao", "langrenqingge", "aiqingxianshipi", "nijiangdehua",
-  "lastdance", "luoyusheng", "aipincaihuiying", "yijibang",
-  "thisisfor", "heavyserenade", "lemonade", "thatsanono",
-  "easyonme", "diewithasmile"
-]);
+/* New catalog entries in this version; retained across page reloads. */
+const NEW_IDS = new Set(SONGS.filter(s => s.id.startsWith('add_')).map(s => s.id));
 
 /* ---------- Risk scoring ----------
    Listening to the whole bank takes about ninety minutes, so nobody does.

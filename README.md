@@ -1,147 +1,84 @@
-# Song Guesser — NTUPM 18th
+# Song Guesser Lab · 金曲猜歌王
 
-A music quiz built for the NTU Pop Music Club's booth at the student club fair,
-still online after it. Fifteen seconds of a song, nine titles, pick the right one.
+純前端單人猜歌遊戲：聽音樂、從九個歌名選出正解。使用靜態 HTTP 主機即可執行，不需要帳號、後端、資料庫或 npm 依賴。改作自 NTUPM 18th，原始程式授權與著作權聲明保留於 LICENSE。
 
-**Play: https://ntupm18th.github.io/ntupm-songguesser/**
+## 這一版的玩法
 
-The interface is Traditional Chinese; the code and comments are English.
+- **競速**：每場十題，每題 12 秒，答對獲得 300 分加最多 700 分速度獎勵，理論滿分 10,000。
+- **闖關**：六關各十題、每題 12 秒；門檻依序為 4,000、5,000、6,000、7,000、8,000、9,000 分。每關重新計分，失敗從第一關重來。
+- **一開始全開放**：兩種模式、所有關卡都使用完整 690 首。每回合至少各一首現代華語、華語經典、台語、西洋、韓文、日文，剩餘四題從全曲庫補足。
+- **跨場輪替**：同一回合不重複，跨回合優先出未玩過的歌；某類型可用歌曲耗盡後才優先回收最久未玩的歌曲。兩種模式共用紀錄，重新整理後保留。
+- **沒有歷史排名**：已移除原社團幹部榜、玩家分布／百分比、Supabase 歷史管理頁與 SQL。只保留這支裝置的個人成績及最高通關紀錄。
 
-## Two modes
+輪替只在題目實際進場時記錄，不會把預載、尚未玩的題目算成已玩過。紀錄使用 localStorage；清除網站資料、換瀏覽器／裝置或網站 origin 都會重設。儲存不可用時，當前頁面仍能輪替，重開後無法保留。類型最低出題數會影響各歌曲機率，並非全曲庫每首機率完全相同。
 
-- **競速 (speed)** — ten questions, 12 seconds each, 10,000 max. The result
-  screen tells you how many of the club you beat and what percentage of all
-  players you are ahead of.
-- **闖關 (stage)** — six stages, ten questions each. Clearing one is about
-  score (4,000 up to 9,000) and the song pool grows as you go: Mandarin →
-  Taiwanese → Western → Korean and Japanese. Whatever a stage unlocks is
-  guaranteed at least one question from then on, so by stage 4 every round
-  holds Taiwanese, Western, and Korean or Japanese. Fail and you restart at
-  stage 1.
+新版個人成績採獨立儲存 key，避免與舊版較窄曲庫的關卡紀錄混算；不會刪除原本瀏覽器中的舊資料。
 
-## No server
+## 題庫與選曲
 
-Everything is a static file. The song bank, the decoys, the preview URLs, the
-crew board and the score distribution all ship with the page; scores live in
-the player's own browser.
+| 分類 | 原有 | 新增 | 現有 |
+| --- | ---: | ---: | ---: |
+| 現代華語 mando | 200 | 50 | 250 |
+| 華語經典 classic | 60 | 50 | 110 |
+| 台語 tw | 30 | 50 | 80 |
+| 韓文 kpop | 42 | 50 | 92 |
+| 西洋 west | 40 | 50 | 90 |
+| 日文 jp | 18 | 50 | 68 |
+| 合計 | 390 | 300 | 690 |
 
-It was not always like this. There used to be a live Supabase leaderboard, and
-it did not survive the game spreading online — the free tier gives 5GB of
-egress a month and we were burning about 1.5GB a day, almost entirely reads.
-The replacement is `crew.js`: the scores the club set before the fair opened,
-frozen, plus the score distribution of 13,191 players. "You beat 23 of the
-club, 89 points short of the next one" turns out to read better than a rank of
-1,240 out of eight thousand, and it costs nothing to serve.
+新增日韓以 2021-10-22 至 2026-10-22 的熱門／廣為人知作品為主；新增現代華語限近二十年，經典挑長期傳唱作品。這是人工選曲清單，不是即時排行榜排名，也不回溯移除原有較早的日韓歌曲。歌曲年代依 Apple 商店的 releaseDate 檢查，可能與作品最初發行日期不同。
 
-`board-config.js`, `staff.html` and `sql/` are what remains of that system. The
-game no longer loads them; they are kept so the historical data stays reachable
-and so the live board can be brought back if anyone wants it.
+[data/library-expansion-2026-10.json](data/library-expansion-2026-10.json) 保存本次 300 首的分類、Apple track ID、商店曲名、歌手、發行日期與作品連結，可供逐首審閱。日文顯示名部分由 Apple 英文／羅馬字對應回原文。300 個新增預覽均經 HTTP Range 可讀性檢查，但此檢查不等於逐首人工抽聽；有翻唱、音源版本或起點疑慮時，仍需使用 `check.html` 試聽。
 
-## Running it
+## 執行
 
-Any static server:
+在專案根目錄：
 
-```
+```sh
 python -m http.server 8000
-# then open http://localhost:8000
-# from a phone on the same Wi-Fi: http://<your-ip>:8000
 ```
 
-Deployment is GitHub Pages from `main`. Push and it is live in about a minute.
+瀏覽器連至本機 8000 埠，輸入暱稱並點「試聽」，再選模式。數字鍵 1–9 可作答。部署可使用 GitHub Pages；是否發佈、從哪個分支發佈由 repository 的 Pages 設定決定，推送功能分支不代表已更新正式網站。
 
-## Audio
+## 音訊與網路
 
-No audio files are stored here. `previews.js` holds Apple's official 30-second
-preview URLs and the browser streams them directly from Apple at play time —
-which is both cheaper and a great deal safer than hosting clips.
+`previews.js` 保存 Apple 官方預覽網址，播放時瀏覽器直接串流，不把錄音打包到 repository。玩家端需要 `audio-ssl.itunes.apple.com`；字型需要 `fonts.googleapis.com` 與 `fonts.gstatic.com`。開發者搜尋工具使用 `itunes.apple.com/search`。
 
-If a song has no preview the game falls back to a synthesised placeholder
-melody, so a missing source is audible rather than silent.
+首題找不到音源會留在載入頁提供重試；後續缺音源仍可能播放合成示範音。示範音不是原曲，也不能算已修好音源。`audio/` 可放具備使用權的自有片段；不要把第三方試聽下載後重新散布。本地探測第一次失敗後會跳過後續本地探測，混合音源曲庫需留意這個既有行為。
 
-`audio/` exists for locally supplied clips (`audio/<id>.m4a` wins over the
-stream), and `tools/make-clips.ps1` cuts them. **Leave it empty unless you own
-the recordings** — hosting audio is redistribution in a way that streaming
-Apple's previews is not.
+## 主要檔案
 
-## Song bank
+| 檔案 | 用途 |
+| --- | --- |
+| index.html | 畫面、規則、音訊、計分、分享與個人紀錄 |
+| song-rotation.js | 可測試的跨場輪替與 localStorage 保存 |
+| songs.js | 正解題庫 |
+| decoys.js | 額外干擾歌名；本次已移除新轉為正解的重複項目 |
+| previews.js | 歌曲 ID 對音源與商店資訊 |
+| check.html | 人工抽聽與本機標記；預設篩選本次 300 首 |
+| data/library-expansion-2026-10.json | 本次選曲來源與日期稽核資料 |
+| tools/ | 預覽搜尋、干擾題產生、自有錄音剪輯工具 |
+| tests/ | 輪替、資料與瀏覽器流程驗證 |
+| docs/architecture/ | 原始版本的架構分析，已標示版本邊界 |
 
-| file | what | audio needed |
-| --- | --- | --- |
-| `songs.js` | 390 songs that can be asked | yes |
-| `decoys.js` | 605 titles used only to fill the grid | no |
-| `previews.js` | preview URL per song, generated | — |
+調整規則請看 index.html 的 CONFIG／STAGES。維護歌曲以唯一 ID 連結 songs.js 與 previews.js；`node tools/fetch-previews.js` 預設只補缺少音源的 ID，`--only id1,id2` 可重抓指定歌曲。`node tools/build-decoys.js` 會重新建立整份 decoys.js，手動修正不保證保留，執行後務必審閱差異。`tools/clips.csv` 是舊剪輯工作表，不隨題庫自動同步。
 
-`genre` never appears on screen. It sets the per-round floor (so every speed
-round has a classic, a Taiwanese track and something non-Chinese), it decides
-which stage a song unlocks in, and it picks decoys — a Mandarin answer needs
-Mandarin decoys or the grid is solvable by elimination.
+## 驗證
 
-Floors are written as `{ mando: 5, classic: 1, tw: 1, 'kpop+west+jp': 1 }`. A
-key joined with `+` draws from those genres as one pool, which is how "one
-non-Chinese song, any language" is expressed. `CONFIG.floor` holds speed
-mode's; each entry in `STAGES` holds its own.
+不需安裝 npm 套件：
 
-### Adding songs
-
-1. Add rows to `songs.js` (`id` unique and lowercase, `title` clean — no
-   "(theme from ...)" subtitles).
-2. `node tools/fetch-previews.js` — fills in what is missing. Review anything
-   it flags as low confidence; a cover version usually matches title and
-   artist perfectly and sounds nothing like the original.
-3. `node tools/build-decoys.js` — rebuilds the decoy pool and drops anything
-   now used as a question.
-4. Open `check.html` and listen. Put the new ids in `NEW_IDS` there and the
-   page defaults to that filter.
-
-Other flags: `--force` refetches everything, `--only id1,id2` targets specific
-songs, `--country JP` switches store, `--delay` slows down (the API allows
-roughly 20 calls a minute).
-
-Two recurring traps, both from the Apple store: titles come back with
-subtitles attached, and Japanese titles come back romanised. Both defeat naive
-duplicate checks, so a song already in the bank can slip into the decoy pool.
-
-## Tuning
-
-`CONFIG` at the top of the script in `index.html` holds the round: question
-count, seconds, base and speed points, per-genre floor, reveal pause.
-
-`STAGES` holds the stage table — threshold, genres, and what each stage
-unlocks. `TITLES` holds the end-of-round titles; edit the table and nothing
-below cares. The last row must have `min: 0`.
-
-## crew.js
-
-Real data. `CREW` is every device that played on the two days before the fair
-opened to the public — that was the club — best score per device, nicknames
-untouched. `SCORE_DIST` is the distribution of best scores across 13,191
-players in 250-point buckets.
-
-**Forking this? Replace `CREW` with your own people.** Those are real
-nicknames belonging to real members.
-
-## Files
-
-```
-index.html              the game (HTML, CSS and JS in one file)
-crew.js                 crew board and score distribution
-songs.js                song bank, hand-maintained
-decoys.js               decoy titles, generated
-previews.js             preview URLs, generated
-check.html              audio check bench, internal
-staff.html              console for the old leaderboard data
-board-config.js         Supabase settings for that old leaderboard
-assets/theme.webp       background (82KB; theme.png is the 1MB master)
-audio/                  optional local clips, empty by default
-tools/                  generators for previews and decoys
-sql/                    schema and prune script for the old leaderboard
+```sh
+node --test tests/*.test.js
 ```
 
-`previews.js` and `decoys.js` are generated — single entries can be corrected
-by hand (the scripts do not overwrite existing values), but do not rewrite them
-wholesale.
+如環境有 Python Playwright 與 Chromium，可執行：
 
-## Licence
+```sh
+python tests/browser-smoke.py
+```
 
-MIT, see `LICENSE`. It covers the source only, not the songs and not the
-nicknames in `crew.js`.
+瀏覽器測試啟動自己的臨時靜態主機，涵蓋真實音源載入、完成一場競速、跨模式與重新整理避重，以及六關的通過／失敗與首頁返回。測試瀏覽器使用獨立 Storage，不會更動玩家資料。
+
+## 授權
+
+程式採 MIT，詳見 LICENSE。錄音、歌詞與第三方內容不隨程式授權移轉；Apple 預覽使用應遵守來源服務條件。本版本移除了原社團成員的真實暱稱與成績資料。

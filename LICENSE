@@ -29,6 +29,3 @@ Apple (audio-ssl.itunes.apple.com); no audio is stored or redistributed by
 this project. Song titles, artist names and recordings belong to their
 respective owners. If you fork this, keep it that way — do not commit audio
 files to audio/.
-
-crew.js contains the real nicknames and scores of the club members who played
-the game. Replace it with your own data before publishing a fork.

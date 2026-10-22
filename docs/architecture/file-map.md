@@ -1,32 +1,34 @@
 # 檔案與功能對照
 
+> 版本註記：本文分析原始版本 `b203a4b`。新版已移除歷史比較、改為全語系開放、加入跨場輪替，並擴充至 690 首；現行規則見 [專案 README](../../README.md)。下方程式連結固定指向原始版本，供對照。
+
 [返回導覽](README.md) · [系統架構](system-design.md) · [遊戲流程](game-flow.md) · [改造建議](modification-roadmap.md)
 
 ## 1. 完整檔案盤點
 
 | 檔案 | 用途與主要內容 | 誰讀取／何時執行 |
 | --- | --- | --- |
-| [index.html](../../index.html) | 主遊戲；內嵌 CSS、畫面 HTML、全部遊戲 JavaScript | 玩家瀏覽器開啟主頁 |
-| [songs.js](../../songs.js) | 人工維護 390 首正解題庫，含 ID／歌名／歌手／genre | 主遊戲、音源檢查台、兩個 Node.js 工具 |
-| [decoys.js](../../decoys.js) | 605 個干擾歌名，不直接出題，不需音源 | 主遊戲補選項 |
-| [previews.js](../../previews.js) | 歌曲 ID 對 Apple 預覽 URL、商店資料、offset、信心度 | 主遊戲、檢查台；抓預覽工具讀取既有內容 |
-| [crew.js](../../crew.js) | 46 名幹部分數、13,191 人母體及分數累積分布 | 主遊戲計算歷史比較 |
-| [check.html](../../check.html) | 獨立音源抽聽頁；風險評分、搜尋、標記、匯出問題歌單 | 開發者瀏覽器；判定只在本機保存 |
-| [staff.html](../../staff.html) | 舊排行榜管理介面；登入、全表分頁讀取、搜尋、排序、隱藏／恢復／刪除 | 管理者瀏覽器；呼叫 Supabase API |
-| [board-config.js](../../board-config.js) | 舊 Supabase URL 與公開 anon key | 只有 staff.html 載入；主遊戲不讀 |
-| [assets/theme.webp](../../assets/theme.webp) | 實際背景，84,404 bytes，約 82 KiB | index.html 的 CSS 背景 |
-| [assets/theme.png](../../assets/theme.png) | 背景原稿，較大；主遊戲未引用 | 素材維護 |
-| [audio/.gitkeep](../../audio/.gitkeep) | 保留空音檔目錄；非可播放素材 | Git 目錄佔位 |
-| [tools/fetch-previews.js](../../tools/fetch-previews.js) | 搜尋 Apple、評估配對、合併並重寫 previews.js | 開發者以 Node.js 手動執行 |
-| [tools/build-decoys.js](../../tools/build-decoys.js) | 按歌手查詢、排除題庫與重複歌名、覆寫 decoys.js | 開發者以 Node.js 手動執行 |
-| [tools/artists.js](../../tools/artists.js) | genre 分組歌手、Apple 譯名／別名、knownArtist 正規化判斷 | build-decoys.js 的 CommonJS require |
-| [tools/clips.csv](../../tools/clips.csv) | 340 首舊剪輯工作清單；id、title、artist、source、start | make-clips.ps1；不是遊戲題庫來源 |
-| [tools/make-clips.ps1](../../tools/make-clips.ps1) | PowerShell 呼叫 FFmpeg，預設剪 15 秒、AAC 96k、44.1 kHz；可 Force 重剪 | 具 PowerShell／FFmpeg 的開發者環境；說明以 Windows 為主 |
-| [sql/leaderboard.sql](../../sql/leaderboard.sql) | 舊分數資料表、CHECK、20 秒觸發器、索引、RLS、leaderboard view | 人工在 Supabase SQL Editor 執行；非玩家腳本 |
-| [sql/prune.sql](../../sql/prune.sql) | 先存每日統計，再清理非最佳歷史資料及舊索引 | 人工維運；包含刪除，不是唯讀查詢 |
-| [README.md](../../README.md) | 英文產品說明、執行方式、歌曲維護及歷史背景 | 開發者入口 |
-| [LICENSE](../../LICENSE) | 程式碼 MIT；另列錄音與真實暱稱不在授權範圍 | 使用／改作前閱讀 |
-| [.gitignore](../../.gitignore) | 忽略剪輯音檔、工具 log、部分設計草稿；保留 audio/.gitkeep | Git |
+| [index.html](https://github.com/bailey87/song_guesser_lab/blob/b203a4b3d42b8f7867f2551b2a1cd0eeb7e5c1f2/index.html) | 主遊戲；內嵌 CSS、畫面 HTML、全部遊戲 JavaScript | 玩家瀏覽器開啟主頁 |
+| [songs.js](https://github.com/bailey87/song_guesser_lab/blob/b203a4b3d42b8f7867f2551b2a1cd0eeb7e5c1f2/songs.js) | 人工維護 390 首正解題庫，含 ID／歌名／歌手／genre | 主遊戲、音源檢查台、兩個 Node.js 工具 |
+| [decoys.js](https://github.com/bailey87/song_guesser_lab/blob/b203a4b3d42b8f7867f2551b2a1cd0eeb7e5c1f2/decoys.js) | 605 個干擾歌名，不直接出題，不需音源 | 主遊戲補選項 |
+| [previews.js](https://github.com/bailey87/song_guesser_lab/blob/b203a4b3d42b8f7867f2551b2a1cd0eeb7e5c1f2/previews.js) | 歌曲 ID 對 Apple 預覽 URL、商店資料、offset、信心度 | 主遊戲、檢查台；抓預覽工具讀取既有內容 |
+| [crew.js](https://github.com/bailey87/song_guesser_lab/blob/b203a4b3d42b8f7867f2551b2a1cd0eeb7e5c1f2/crew.js) | 46 名幹部分數、13,191 人母體及分數累積分布 | 主遊戲計算歷史比較 |
+| [check.html](https://github.com/bailey87/song_guesser_lab/blob/b203a4b3d42b8f7867f2551b2a1cd0eeb7e5c1f2/check.html) | 獨立音源抽聽頁；風險評分、搜尋、標記、匯出問題歌單 | 開發者瀏覽器；判定只在本機保存 |
+| [staff.html](https://github.com/bailey87/song_guesser_lab/blob/b203a4b3d42b8f7867f2551b2a1cd0eeb7e5c1f2/staff.html) | 舊排行榜管理介面；登入、全表分頁讀取、搜尋、排序、隱藏／恢復／刪除 | 管理者瀏覽器；呼叫 Supabase API |
+| [board-config.js](https://github.com/bailey87/song_guesser_lab/blob/b203a4b3d42b8f7867f2551b2a1cd0eeb7e5c1f2/board-config.js) | 舊 Supabase URL 與公開 anon key | 只有 staff.html 載入；主遊戲不讀 |
+| [assets/theme.webp](https://github.com/bailey87/song_guesser_lab/blob/b203a4b3d42b8f7867f2551b2a1cd0eeb7e5c1f2/assets/theme.webp) | 實際背景，84,404 bytes，約 82 KiB | index.html 的 CSS 背景 |
+| [assets/theme.png](https://github.com/bailey87/song_guesser_lab/blob/b203a4b3d42b8f7867f2551b2a1cd0eeb7e5c1f2/assets/theme.png) | 背景原稿，較大；主遊戲未引用 | 素材維護 |
+| [audio/.gitkeep](https://github.com/bailey87/song_guesser_lab/blob/b203a4b3d42b8f7867f2551b2a1cd0eeb7e5c1f2/audio/.gitkeep) | 保留空音檔目錄；非可播放素材 | Git 目錄佔位 |
+| [tools/fetch-previews.js](https://github.com/bailey87/song_guesser_lab/blob/b203a4b3d42b8f7867f2551b2a1cd0eeb7e5c1f2/tools/fetch-previews.js) | 搜尋 Apple、評估配對、合併並重寫 previews.js | 開發者以 Node.js 手動執行 |
+| [tools/build-decoys.js](https://github.com/bailey87/song_guesser_lab/blob/b203a4b3d42b8f7867f2551b2a1cd0eeb7e5c1f2/tools/build-decoys.js) | 按歌手查詢、排除題庫與重複歌名、覆寫 decoys.js | 開發者以 Node.js 手動執行 |
+| [tools/artists.js](https://github.com/bailey87/song_guesser_lab/blob/b203a4b3d42b8f7867f2551b2a1cd0eeb7e5c1f2/tools/artists.js) | genre 分組歌手、Apple 譯名／別名、knownArtist 正規化判斷 | build-decoys.js 的 CommonJS require |
+| [tools/clips.csv](https://github.com/bailey87/song_guesser_lab/blob/b203a4b3d42b8f7867f2551b2a1cd0eeb7e5c1f2/tools/clips.csv) | 340 首舊剪輯工作清單；id、title、artist、source、start | make-clips.ps1；不是遊戲題庫來源 |
+| [tools/make-clips.ps1](https://github.com/bailey87/song_guesser_lab/blob/b203a4b3d42b8f7867f2551b2a1cd0eeb7e5c1f2/tools/make-clips.ps1) | PowerShell 呼叫 FFmpeg，預設剪 15 秒、AAC 96k、44.1 kHz；可 Force 重剪 | 具 PowerShell／FFmpeg 的開發者環境；說明以 Windows 為主 |
+| [sql/leaderboard.sql](https://github.com/bailey87/song_guesser_lab/blob/b203a4b3d42b8f7867f2551b2a1cd0eeb7e5c1f2/sql/leaderboard.sql) | 舊分數資料表、CHECK、20 秒觸發器、索引、RLS、leaderboard view | 人工在 Supabase SQL Editor 執行；非玩家腳本 |
+| [sql/prune.sql](https://github.com/bailey87/song_guesser_lab/blob/b203a4b3d42b8f7867f2551b2a1cd0eeb7e5c1f2/sql/prune.sql) | 先存每日統計，再清理非最佳歷史資料及舊索引 | 人工維運；包含刪除，不是唯讀查詢 |
+| [README.md](https://github.com/bailey87/song_guesser_lab/blob/b203a4b3d42b8f7867f2551b2a1cd0eeb7e5c1f2/README.md) | 英文產品說明、執行方式、歌曲維護及歷史背景 | 開發者入口 |
+| [LICENSE](https://github.com/bailey87/song_guesser_lab/blob/b203a4b3d42b8f7867f2551b2a1cd0eeb7e5c1f2/LICENSE) | 程式碼 MIT；另列錄音與真實暱稱不在授權範圍 | 使用／改作前閱讀 |
+| [.gitignore](https://github.com/bailey87/song_guesser_lab/blob/b203a4b3d42b8f7867f2551b2a1cd0eeb7e5c1f2/.gitignore) | 忽略剪輯音檔、工具 log、部分設計草稿；保留 audio/.gitkeep | Git |
 | docs/architecture/ | 本次新增五份架構分析文件 | 閱讀與審閱；不會載入遊戲 |
 
 repository 沒有 package manifest、lockfile、自訂 `.github/workflows`、後端入口或自動測試資料夾。註解提到的 `clean-decoys.js` 不在目前 checkout，不能把它當作現成工具。
