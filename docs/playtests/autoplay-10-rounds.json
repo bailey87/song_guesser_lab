@@ -1,0 +1,1032 @@
+{
+  "startedAt": "2026-10-22T16:14:29.473595+08:00",
+  "commit": "00d816321d60c45b418722bf748c4cf8d27dad89",
+  "target": "Current checkout served locally; not a deployment verification",
+  "method": "Real Chromium audio; auto-select correct answers; revealMs=10; fresh storage; reload after round 5",
+  "rounds": [
+    {
+      "round": 1,
+      "songs": [
+        {
+          "id": "woshiyizhiyu",
+          "title": "我是一隻魚",
+          "artist": "落日飛車",
+          "genre": "mando",
+          "source": "preview",
+          "playbackSeconds": 0.006323,
+          "optionCount": 9
+        },
+        {
+          "id": "add_tw_1108743802",
+          "title": "啊哥哥",
+          "artist": "謝金燕",
+          "genre": "tw",
+          "source": "preview",
+          "playbackSeconds": 0.008029,
+          "optionCount": 9
+        },
+        {
+          "id": "closer",
+          "title": "Closer",
+          "artist": "The Chainsmokers",
+          "genre": "west",
+          "source": "preview",
+          "playbackSeconds": 0.019031,
+          "optionCount": 9
+        },
+        {
+          "id": "daoxiang",
+          "title": "稻香",
+          "artist": "周杰倫",
+          "genre": "mando",
+          "source": "preview",
+          "playbackSeconds": 0.018285,
+          "optionCount": 9
+        },
+        {
+          "id": "add_west_1440852679",
+          "title": "One Last Time",
+          "artist": "Ariana Grande",
+          "genre": "west",
+          "source": "preview",
+          "playbackSeconds": 0.022511,
+          "optionCount": 9
+        },
+        {
+          "id": "add_kpop_1660144217",
+          "title": "MOONLIGHT SUNRISE",
+          "artist": "TWICE",
+          "genre": "kpop",
+          "source": "preview",
+          "playbackSeconds": 0.002847,
+          "optionCount": 9
+        },
+        {
+          "id": "add_jp_1746901893",
+          "title": "MIRROR",
+          "artist": "Ado",
+          "genre": "jp",
+          "source": "preview",
+          "playbackSeconds": 0.017458,
+          "optionCount": 9
+        },
+        {
+          "id": "seeyouagain",
+          "title": "See You Again",
+          "artist": "Wiz Khalifa",
+          "genre": "west",
+          "source": "preview",
+          "playbackSeconds": 0,
+          "optionCount": 9
+        },
+        {
+          "id": "ruguokeyi",
+          "title": "如果可以",
+          "artist": "韋禮安",
+          "genre": "mando",
+          "source": "preview",
+          "playbackSeconds": 0.016064,
+          "optionCount": 9
+        },
+        {
+          "id": "add_classic_1442804732",
+          "title": "你最珍貴",
+          "artist": "張學友",
+          "genre": "classic",
+          "source": "preview",
+          "playbackSeconds": 0.009461,
+          "optionCount": 9
+        }
+      ],
+      "score": 9439,
+      "correct": 10,
+      "historyCount": 10
+    },
+    {
+      "round": 2,
+      "songs": [
+        {
+          "id": "add_west_1440713478",
+          "title": "Moves Like Jagger",
+          "artist": "Maroon 5",
+          "genre": "west",
+          "source": "preview",
+          "playbackSeconds": 0.012307,
+          "optionCount": 9
+        },
+        {
+          "id": "add_tw_375431240",
+          "title": "晚安台灣",
+          "artist": "滅火器",
+          "genre": "tw",
+          "source": "preview",
+          "playbackSeconds": 0.004402,
+          "optionCount": 9
+        },
+        {
+          "id": "gee",
+          "title": "Gee",
+          "artist": "少女時代",
+          "genre": "kpop",
+          "source": "preview",
+          "playbackSeconds": 0.021658,
+          "optionCount": 9
+        },
+        {
+          "id": "add_jp_1752838890",
+          "title": "UNDEAD",
+          "artist": "YOASOBI",
+          "genre": "jp",
+          "source": "preview",
+          "playbackSeconds": 0.002529,
+          "optionCount": 9
+        },
+        {
+          "id": "tashuo",
+          "title": "她說",
+          "artist": "林俊傑",
+          "genre": "mando",
+          "source": "preview",
+          "playbackSeconds": 0.013217,
+          "optionCount": 9
+        },
+        {
+          "id": "daodai",
+          "title": "倒帶",
+          "artist": "蔡依林",
+          "genre": "mando",
+          "source": "preview",
+          "playbackSeconds": 0.007923,
+          "optionCount": 9
+        },
+        {
+          "id": "add_mando_1590180103",
+          "title": "你不屬於我",
+          "artist": "周興哲",
+          "genre": "mando",
+          "source": "preview",
+          "playbackSeconds": 0.015351,
+          "optionCount": 9
+        },
+        {
+          "id": "quekou",
+          "title": "缺口",
+          "artist": "庾澄慶",
+          "genre": "classic",
+          "source": "preview",
+          "playbackSeconds": 0.009582,
+          "optionCount": 9
+        },
+        {
+          "id": "aizheaizhejiuyongyuan",
+          "title": "愛著愛著就永遠",
+          "artist": "田馥甄",
+          "genre": "mando",
+          "source": "preview",
+          "playbackSeconds": 0.000365,
+          "optionCount": 9
+        },
+        {
+          "id": "add_kpop_1695951905",
+          "title": "Cool With You",
+          "artist": "NewJeans",
+          "genre": "kpop",
+          "source": "preview",
+          "playbackSeconds": 0.018909,
+          "optionCount": 9
+        }
+      ],
+      "score": 9968,
+      "correct": 10,
+      "historyCount": 20
+    },
+    {
+      "round": 3,
+      "songs": [
+        {
+          "id": "add_kpop_1635469854",
+          "title": "Cookie",
+          "artist": "NewJeans",
+          "genre": "kpop",
+          "source": "preview",
+          "playbackSeconds": 0.005463,
+          "optionCount": 9
+        },
+        {
+          "id": "add_west_1422651844",
+          "title": "Animals",
+          "artist": "Maroon 5",
+          "genre": "west",
+          "source": "preview",
+          "playbackSeconds": 0.000266,
+          "optionCount": 9
+        },
+        {
+          "id": "gurenge",
+          "title": "紅蓮華",
+          "artist": "LiSA",
+          "genre": "jp",
+          "source": "preview",
+          "playbackSeconds": 0.014514,
+          "optionCount": 9
+        },
+        {
+          "id": "yorunikakeru",
+          "title": "夜に駆ける",
+          "artist": "YOASOBI",
+          "genre": "jp",
+          "source": "preview",
+          "playbackSeconds": 0.001356,
+          "optionCount": 9
+        },
+        {
+          "id": "jimojiuhao",
+          "title": "寂寞寂寞就好",
+          "artist": "田馥甄",
+          "genre": "mando",
+          "source": "preview",
+          "playbackSeconds": 0.017647,
+          "optionCount": 9
+        },
+        {
+          "id": "add_classic_1442587367",
+          "title": "她來聽我的演唱會",
+          "artist": "張學友",
+          "genre": "classic",
+          "source": "preview",
+          "playbackSeconds": 0.007185,
+          "optionCount": 9
+        },
+        {
+          "id": "changtuyeche",
+          "title": "長途夜車",
+          "artist": "滅火器",
+          "genre": "tw",
+          "source": "preview",
+          "playbackSeconds": 0.021456,
+          "optionCount": 9
+        },
+        {
+          "id": "xihuanni",
+          "title": "喜歡你",
+          "artist": "鄧紫棋",
+          "genre": "mando",
+          "source": "preview",
+          "playbackSeconds": 0.01254,
+          "optionCount": 9
+        },
+        {
+          "id": "add_tw_1689556965",
+          "title": "繁華攏是夢",
+          "artist": "江蕙",
+          "genre": "tw",
+          "source": "preview",
+          "playbackSeconds": 0.00361,
+          "optionCount": 9
+        },
+        {
+          "id": "hongsegaogenxie",
+          "title": "紅色高跟鞋",
+          "artist": "蔡健雅",
+          "genre": "mando",
+          "source": "preview",
+          "playbackSeconds": 0,
+          "optionCount": 9
+        }
+      ],
+      "score": 9444,
+      "correct": 10,
+      "historyCount": 30
+    },
+    {
+      "round": 4,
+      "songs": [
+        {
+          "id": "add_tw_1108743813",
+          "title": "苦酒落喉",
+          "artist": "謝金燕",
+          "genre": "tw",
+          "source": "preview",
+          "playbackSeconds": 0.016782,
+          "optionCount": 9
+        },
+        {
+          "id": "golden",
+          "title": "Golden",
+          "artist": "HUNTR/X",
+          "genre": "kpop",
+          "source": "preview",
+          "playbackSeconds": 0.019776,
+          "optionCount": 9
+        },
+        {
+          "id": "add_mando_744962947",
+          "title": "渺小",
+          "artist": "田馥甄",
+          "genre": "mando",
+          "source": "preview",
+          "playbackSeconds": 0.009314,
+          "optionCount": 9
+        },
+        {
+          "id": "qishidoumeiyou",
+          "title": "其實都沒有",
+          "artist": "楊宗緯",
+          "genre": "mando",
+          "source": "preview",
+          "playbackSeconds": 0.0015,
+          "optionCount": 9
+        },
+        {
+          "id": "wangqingshui",
+          "title": "忘情水",
+          "artist": "劉德華",
+          "genre": "classic",
+          "source": "preview",
+          "playbackSeconds": 0.02088,
+          "optionCount": 9
+        },
+        {
+          "id": "add_tw_379810434",
+          "title": "返去故鄉",
+          "artist": "伍佰",
+          "genre": "tw",
+          "source": "preview",
+          "playbackSeconds": 0.023114,
+          "optionCount": 9
+        },
+        {
+          "id": "taotai",
+          "title": "淘汰",
+          "artist": "陳奕迅",
+          "genre": "mando",
+          "source": "preview",
+          "playbackSeconds": 0.014251,
+          "optionCount": 9
+        },
+        {
+          "id": "attention",
+          "title": "Attention",
+          "artist": "Charlie Puth",
+          "genre": "west",
+          "source": "preview",
+          "playbackSeconds": 0.007664,
+          "optionCount": 9
+        },
+        {
+          "id": "lianaiing",
+          "title": "戀愛ing",
+          "artist": "五月天",
+          "genre": "mando",
+          "source": "preview",
+          "playbackSeconds": 0.004602,
+          "optionCount": 9
+        },
+        {
+          "id": "add_jp_1669698270",
+          "title": "アドベンチャー",
+          "artist": "YOASOBI",
+          "genre": "jp",
+          "source": "preview",
+          "playbackSeconds": 0.017814,
+          "optionCount": 9
+        }
+      ],
+      "score": 9964,
+      "correct": 10,
+      "historyCount": 40
+    },
+    {
+      "round": 5,
+      "songs": [
+        {
+          "id": "add_jp_1676871814",
+          "title": "LADY",
+          "artist": "米津玄師",
+          "genre": "jp",
+          "source": "preview",
+          "playbackSeconds": 0.025112,
+          "optionCount": 9
+        },
+        {
+          "id": "add_west_573962555",
+          "title": "When I Was Your Man",
+          "artist": "Bruno Mars",
+          "genre": "west",
+          "source": "preview",
+          "playbackSeconds": 0.015184,
+          "optionCount": 9
+        },
+        {
+          "id": "add_west_1049108515",
+          "title": "Thinking Out Loud",
+          "artist": "Ed Sheeran",
+          "genre": "west",
+          "source": "preview",
+          "playbackSeconds": 0.015738,
+          "optionCount": 9
+        },
+        {
+          "id": "add_classic_1442291524",
+          "title": "小城故事",
+          "artist": "鄧麗君",
+          "genre": "classic",
+          "source": "preview",
+          "playbackSeconds": 0.009901,
+          "optionCount": 9
+        },
+        {
+          "id": "add_kpop_1680047366",
+          "title": "I AM",
+          "artist": "IVE",
+          "genre": "kpop",
+          "source": "preview",
+          "playbackSeconds": 0,
+          "optionCount": 9
+        },
+        {
+          "id": "qingtian",
+          "title": "晴天",
+          "artist": "周杰倫",
+          "genre": "mando",
+          "source": "preview",
+          "playbackSeconds": 0.016209,
+          "optionCount": 9
+        },
+        {
+          "id": "balidezhou",
+          "title": "巴黎德州",
+          "artist": "椅子樂團",
+          "genre": "mando",
+          "source": "preview",
+          "playbackSeconds": 0.018585,
+          "optionCount": 9
+        },
+        {
+          "id": "add_mando_1624001317",
+          "title": "花海",
+          "artist": "周杰倫",
+          "genre": "mando",
+          "source": "preview",
+          "playbackSeconds": 0.008602,
+          "optionCount": 9
+        },
+        {
+          "id": "aiqingweida",
+          "title": "愛情你比我想的閣較偉大",
+          "artist": "茄子蛋",
+          "genre": "tw",
+          "source": "preview",
+          "playbackSeconds": 0.002328,
+          "optionCount": 9
+        },
+        {
+          "id": "xinmen",
+          "title": "心悶",
+          "artist": "美秀集團",
+          "genre": "tw",
+          "source": "preview",
+          "playbackSeconds": 0.020138,
+          "optionCount": 9
+        }
+      ],
+      "score": 9441,
+      "correct": 10,
+      "historyCount": 50
+    },
+    {
+      "round": 6,
+      "songs": [
+        {
+          "id": "add_kpop_1616804152",
+          "title": "LOVE DIVE",
+          "artist": "IVE",
+          "genre": "kpop",
+          "source": "preview",
+          "playbackSeconds": 0.006606,
+          "optionCount": 9
+        },
+        {
+          "id": "yushi",
+          "title": "浴室",
+          "artist": "deca joins",
+          "genre": "mando",
+          "source": "preview",
+          "playbackSeconds": 0.014032,
+          "optionCount": 9
+        },
+        {
+          "id": "zenzenzense",
+          "title": "前前前世",
+          "artist": "RADWIMPS",
+          "genre": "jp",
+          "source": "preview",
+          "playbackSeconds": 0.00478,
+          "optionCount": 9
+        },
+        {
+          "id": "yihoubiezuo",
+          "title": "以後別做朋友",
+          "artist": "周興哲",
+          "genre": "mando",
+          "source": "preview",
+          "playbackSeconds": 0.019559,
+          "optionCount": 9
+        },
+        {
+          "id": "add_tw_1108743816",
+          "title": "愛甲心痛",
+          "artist": "謝金燕",
+          "genre": "tw",
+          "source": "preview",
+          "playbackSeconds": 0.006651,
+          "optionCount": 9
+        },
+        {
+          "id": "add_kpop_1712731159",
+          "title": "Perfect Night",
+          "artist": "LE SSERAFIM",
+          "genre": "kpop",
+          "source": "preview",
+          "playbackSeconds": 0.019246,
+          "optionCount": 9
+        },
+        {
+          "id": "loveyourself",
+          "title": "Love Yourself",
+          "artist": "Justin Bieber",
+          "genre": "west",
+          "source": "preview",
+          "playbackSeconds": 0.021272,
+          "optionCount": 9
+        },
+        {
+          "id": "yinweiaiqing",
+          "title": "因為愛情",
+          "artist": "陳奕迅",
+          "genre": "classic",
+          "source": "preview",
+          "playbackSeconds": 0.016253,
+          "optionCount": 9
+        },
+        {
+          "id": "niania",
+          "title": "你啊你啊",
+          "artist": "魏如萱",
+          "genre": "mando",
+          "source": "preview",
+          "playbackSeconds": 0.016897,
+          "optionCount": 9
+        },
+        {
+          "id": "wuding",
+          "title": "屋頂",
+          "artist": "溫嵐",
+          "genre": "classic",
+          "source": "preview",
+          "playbackSeconds": 0.010578,
+          "optionCount": 9
+        }
+      ],
+      "score": 9966,
+      "correct": 10,
+      "historyCount": 60
+    },
+    {
+      "round": 7,
+      "songs": [
+        {
+          "id": "add_classic_914677903",
+          "title": "給你們",
+          "artist": "張宇",
+          "genre": "classic",
+          "source": "preview",
+          "playbackSeconds": 0.020479,
+          "optionCount": 9
+        },
+        {
+          "id": "meihaodeshi",
+          "title": "美好的事可不可以發生在我身上",
+          "artist": "康士坦的變化球",
+          "genre": "mando",
+          "source": "preview",
+          "playbackSeconds": 0.002938,
+          "optionCount": 9
+        },
+        {
+          "id": "add_kpop_1802621266",
+          "title": "MY BAG",
+          "artist": "(G)I-DLE",
+          "genre": "kpop",
+          "source": "preview",
+          "playbackSeconds": 0.017878,
+          "optionCount": 9
+        },
+        {
+          "id": "add_jp_1691843910",
+          "title": "月を見ていた",
+          "artist": "米津玄師",
+          "genre": "jp",
+          "source": "preview",
+          "playbackSeconds": 0.001629,
+          "optionCount": 9
+        },
+        {
+          "id": "zhaobudaolangman",
+          "title": "在這個年代,找不到浪漫",
+          "artist": "溫室雜草",
+          "genre": "mando",
+          "source": "preview",
+          "playbackSeconds": 0.016897,
+          "optionCount": 9
+        },
+        {
+          "id": "bbbb",
+          "title": "Bling-Bang-Bang-Born",
+          "artist": "Creepy Nuts",
+          "genre": "jp",
+          "source": "preview",
+          "playbackSeconds": 0.003601,
+          "optionCount": 9
+        },
+        {
+          "id": "believer",
+          "title": "Believer",
+          "artist": "Imagine Dragons",
+          "genre": "west",
+          "source": "preview",
+          "playbackSeconds": 0.016952,
+          "optionCount": 9
+        },
+        {
+          "id": "yueliang",
+          "title": "月亮代表我的心",
+          "artist": "鄧麗君",
+          "genre": "classic",
+          "source": "preview",
+          "playbackSeconds": 0.02322,
+          "optionCount": 9
+        },
+        {
+          "id": "add_tw_1726979835",
+          "title": "請問你敢欲做我的 Girlfriend?",
+          "artist": "茄子蛋",
+          "genre": "tw",
+          "source": "preview",
+          "playbackSeconds": 0.014241,
+          "optionCount": 9
+        },
+        {
+          "id": "butter",
+          "title": "Butter",
+          "artist": "BTS",
+          "genre": "kpop",
+          "source": "preview",
+          "playbackSeconds": 0.013768,
+          "optionCount": 9
+        }
+      ],
+      "score": 9963,
+      "correct": 10,
+      "historyCount": 70
+    },
+    {
+      "round": 8,
+      "songs": [
+        {
+          "id": "hypeboy",
+          "title": "Hype Boy",
+          "artist": "NewJeans",
+          "genre": "kpop",
+          "source": "preview",
+          "playbackSeconds": 0.015019,
+          "optionCount": 9
+        },
+        {
+          "id": "xinbuleqing",
+          "title": "新不了情",
+          "artist": "萬芳",
+          "genre": "classic",
+          "source": "preview",
+          "playbackSeconds": 0.017994,
+          "optionCount": 9
+        },
+        {
+          "id": "qilixiang",
+          "title": "七里香",
+          "artist": "周杰倫",
+          "genre": "mando",
+          "source": "preview",
+          "playbackSeconds": 0.001881,
+          "optionCount": 9
+        },
+        {
+          "id": "add_jp_1704093812",
+          "title": "唱",
+          "artist": "Ado",
+          "genre": "jp",
+          "source": "preview",
+          "playbackSeconds": 0.012436,
+          "optionCount": 9
+        },
+        {
+          "id": "aiqingxianshipi",
+          "title": "愛情限時批",
+          "artist": "萬芳",
+          "genre": "tw",
+          "source": "preview",
+          "playbackSeconds": 0.013769,
+          "optionCount": 9
+        },
+        {
+          "id": "luguorenjian",
+          "title": "路過人間",
+          "artist": "郁可唯",
+          "genre": "mando",
+          "source": "preview",
+          "playbackSeconds": 0.011736,
+          "optionCount": 9
+        },
+        {
+          "id": "add_west_1440830132",
+          "title": "Demons",
+          "artist": "Imagine Dragons",
+          "genre": "west",
+          "source": "preview",
+          "playbackSeconds": 0.019273,
+          "optionCount": 9
+        },
+        {
+          "id": "wendingshenghuo",
+          "title": "穩定生活多美好 三年五年高普考",
+          "artist": "老王樂隊",
+          "genre": "mando",
+          "source": "preview",
+          "playbackSeconds": 0.015522,
+          "optionCount": 9
+        },
+        {
+          "id": "youdiantian",
+          "title": "有點甜",
+          "artist": "汪蘇瀧",
+          "genre": "mando",
+          "source": "preview",
+          "playbackSeconds": 0.021664,
+          "optionCount": 9
+        },
+        {
+          "id": "add_tw_1064846470",
+          "title": "嘻哈庄腳情",
+          "artist": "玖壹壹",
+          "genre": "tw",
+          "source": "preview",
+          "playbackSeconds": 0.01266,
+          "optionCount": 9
+        }
+      ],
+      "score": 9965,
+      "correct": 10,
+      "historyCount": 80
+    },
+    {
+      "round": 9,
+      "songs": [
+        {
+          "id": "aiwobiezou",
+          "title": "愛我別走",
+          "artist": "張震嶽",
+          "genre": "classic",
+          "source": "preview",
+          "playbackSeconds": 0.001653,
+          "optionCount": 9
+        },
+        {
+          "id": "add_tw_540465657",
+          "title": "情路無尾巷",
+          "artist": "蕭煌奇",
+          "genre": "tw",
+          "source": "preview",
+          "playbackSeconds": 0.008308,
+          "optionCount": 9
+        },
+        {
+          "id": "add_jp_1790607807",
+          "title": "BOW AND ARROW",
+          "artist": "米津玄師",
+          "genre": "jp",
+          "source": "preview",
+          "playbackSeconds": 0,
+          "optionCount": 9
+        },
+        {
+          "id": "despacito",
+          "title": "Despacito",
+          "artist": "Luis Fonsi",
+          "genre": "west",
+          "source": "preview",
+          "playbackSeconds": 0.020532,
+          "optionCount": 9
+        },
+        {
+          "id": "add_kpop_1745285228",
+          "title": "Armageddon",
+          "artist": "aespa",
+          "genre": "kpop",
+          "source": "preview",
+          "playbackSeconds": 0.018699,
+          "optionCount": 9
+        },
+        {
+          "id": "add_tw_379810442",
+          "title": "樹枝孤鳥",
+          "artist": "伍佰",
+          "genre": "tw",
+          "source": "preview",
+          "playbackSeconds": 0.002187,
+          "optionCount": 9
+        },
+        {
+          "id": "add_classic_914675882",
+          "title": "曲終人散",
+          "artist": "張宇",
+          "genre": "classic",
+          "source": "preview",
+          "playbackSeconds": 0.016774,
+          "optionCount": 9
+        },
+        {
+          "id": "haoxinfenshou",
+          "title": "好心分手",
+          "artist": "盧巧音",
+          "genre": "mando",
+          "source": "preview",
+          "playbackSeconds": 0.011203,
+          "optionCount": 9
+        },
+        {
+          "id": "aicuo",
+          "title": "愛錯",
+          "artist": "王力宏",
+          "genre": "mando",
+          "source": "preview",
+          "playbackSeconds": 0.023036,
+          "optionCount": 9
+        },
+        {
+          "id": "dang",
+          "title": "當",
+          "artist": "動力火車",
+          "genre": "mando",
+          "source": "preview",
+          "playbackSeconds": 0.005831,
+          "optionCount": 9
+        }
+      ],
+      "score": 9436,
+      "correct": 10,
+      "historyCount": 90
+    },
+    {
+      "round": 10,
+      "songs": [
+        {
+          "id": "dianqijiaojianai",
+          "title": "踮起腳尖愛",
+          "artist": "洪佩瑜",
+          "genre": "mando",
+          "source": "preview",
+          "playbackSeconds": 0.005102,
+          "optionCount": 9
+        },
+        {
+          "id": "supershy",
+          "title": "Super Shy",
+          "artist": "NewJeans",
+          "genre": "kpop",
+          "source": "preview",
+          "playbackSeconds": 0.006808,
+          "optionCount": 9
+        },
+        {
+          "id": "dongxiaojie",
+          "title": "董小姐",
+          "artist": "宋冬野",
+          "genre": "mando",
+          "source": "preview",
+          "playbackSeconds": 0.001355,
+          "optionCount": 9
+        },
+        {
+          "id": "wewillrockyou",
+          "title": "We Will Rock You",
+          "artist": "Queen",
+          "genre": "west",
+          "source": "preview",
+          "playbackSeconds": 0.014338,
+          "optionCount": 9
+        },
+        {
+          "id": "wancange",
+          "title": "晩餐歌",
+          "artist": "tuki.",
+          "genre": "jp",
+          "source": "preview",
+          "playbackSeconds": 0.002921,
+          "optionCount": 9
+        },
+        {
+          "id": "add_tw_1444719864",
+          "title": "愛作夢的魚",
+          "artist": "江蕙",
+          "genre": "tw",
+          "source": "preview",
+          "playbackSeconds": 0.011923,
+          "optionCount": 9
+        },
+        {
+          "id": "dujiaoxi",
+          "title": "獨角戲",
+          "artist": "許茹芸",
+          "genre": "classic",
+          "source": "preview",
+          "playbackSeconds": 0.00288,
+          "optionCount": 9
+        },
+        {
+          "id": "yichangyouxi",
+          "title": "一場遊戲一場夢",
+          "artist": "王傑",
+          "genre": "classic",
+          "source": "preview",
+          "playbackSeconds": 0.017213,
+          "optionCount": 9
+        },
+        {
+          "id": "add_tw_1143617807",
+          "title": "成功的條件",
+          "artist": "葉啟田",
+          "genre": "tw",
+          "source": "preview",
+          "playbackSeconds": 0.004571,
+          "optionCount": 9
+        },
+        {
+          "id": "rangwoliuzainishenbian",
+          "title": "讓我留在你身邊",
+          "artist": "陳奕迅",
+          "genre": "mando",
+          "source": "preview",
+          "playbackSeconds": 0.022268,
+          "optionCount": 9
+        }
+      ],
+      "score": 9965,
+      "correct": 10,
+      "historyCount": 100
+    }
+  ],
+  "summary": {
+    "completedRounds": 10,
+    "questions": 100,
+    "uniqueSongs": 100,
+    "repeatAppearances": 0,
+    "genreCounts": {
+      "mando": 32,
+      "tw": 16,
+      "west": 13,
+      "kpop": 13,
+      "jp": 12,
+      "classic": 14
+    },
+    "allRealAudioPlayback": false,
+    "confirmedPlaybackQuestions": 96,
+    "unconfirmedPlaybackSongs": [
+      {
+        "round": 1,
+        "question": 8,
+        "id": "seeyouagain",
+        "title": "See You Again"
+      },
+      {
+        "round": 3,
+        "question": 10,
+        "id": "hongsegaogenxie",
+        "title": "紅色高跟鞋"
+      },
+      {
+        "round": 5,
+        "question": 5,
+        "id": "add_kpop_1680047366",
+        "title": "I AM"
+      },
+      {
+        "round": 9,
+        "question": 3,
+        "id": "add_jp_1790607807",
+        "title": "BOW AND ARROW"
+      }
+    ],
+    "javascriptErrors": []
+  },
+  "completedAt": "2026-10-22T16:15:29.313232+08:00"
+}
