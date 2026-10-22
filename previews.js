@@ -1,5 +1,5 @@
 /* Official Apple preview URL mappings.
- * Original entries retained; 300 catalog-matched entries added 2026-10-22.
+ * Original entries retained; 320 catalog-matched entries added 2026-10-22.
  * conf describes catalog matching, not a guarantee of the recording or URL.
  * Audio is streamed by the browser, not bundled in this repository.
  */
@@ -5521,6 +5521,166 @@ window.SONG_PREVIEWS = {
     "title": "Sunflower (Spider-Man: Into the Spider-Verse)",
     "artist": "Post Malone & Swae Lee",
     "album": "Spider-Man: Into the Spider-Verse (Soundtrack From & Inspired by the Motion Picture)",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_hisaishi_1498700482": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/72/15/1d/72151daa-4bc4-e757-003b-03d8bfdb5474/mzaf_8123774891067663580.plus.aac.p.m4a",
+    "title": "Summer",
+    "artist": "久石讓",
+    "album": "Kikujiro (Original Motion Picture Soundtrack)",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_hisaishi_883501723": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/a2/bf/a2/a2bfa255-786b-551c-2433-f40d5b7cbb6e/mzaf_6741552970465711655.plus.aac.p.m4a",
+    "title": "那個夏天",
+    "artist": "久石讓",
+    "album": "神隱少女 動畫電影原聲帶",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_hisaishi_883513433": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/14/c7/78/14c778c9-3518-3261-e2ba-f26ee12001d0/mzaf_11155612570277188693.plus.aac.p.m4a",
+    "title": "Opening - 人生的旋轉木馬",
+    "artist": "久石讓",
+    "album": "霍爾的移動城堡 動畫電影原聲帶",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_hisaishi_882410536": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/96/7f/69/967f6944-e0e8-8f22-453d-a36da8126454/mzaf_7858999620064392935.plus.aac.p.m4a",
+    "title": "風之通道",
+    "artist": "久石讓",
+    "album": "龍貓 動畫電影原聲帶",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_hisaishi_882410542": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/a6/6d/a9/a66da9c8-3133-211a-74aa-dceb3a92c9d5/mzaf_8289863529031419500.plus.aac.p.m4a",
+    "title": "隔壁的龍貓",
+    "artist": "久石讓 & 井上あずみ",
+    "album": "龍貓 動畫電影原聲帶",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_hisaishi_882407940": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/7e/52/62/7e5262ba-0928-fbf3-3462-e049823dabc9/mzaf_7625044996012373802.plus.aac.p.m4a",
+    "title": "伴隨著你",
+    "artist": "久石讓 & 井上あずみ",
+    "album": "天空之城 動畫電影原聲帶 飛行石之謎",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_hisaishi_883501071": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/92/5e/b0/925eb0c2-847f-0673-e87d-9baf3e37133b/mzaf_7516742574699833025.plus.aac.p.m4a",
+    "title": "魔法公主 (演奏版)",
+    "artist": "久石讓",
+    "album": "魔法公主 動畫電影原聲帶",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_hisaishi_883501267": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/5b/10/58/5b1058cb-35d5-e05c-7c84-6bd9dfe8ddaf/mzaf_16414076643499020565.plus.aac.p.m4a",
+    "title": "阿席達卡與小桑",
+    "artist": "久石讓",
+    "album": "魔法公主 動畫電影原聲帶",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_hisaishi_883501052": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/db/b3/56/dbb356e9-1fa1-47d3-1c0c-3a8801da1a5a/mzaf_18382420884458084429.plus.aac.p.m4a",
+    "title": "阿席達卡傳奇",
+    "artist": "久石讓",
+    "album": "魔法公主 動畫電影原聲帶",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_hisaishi_885295070": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/d1/63/7e/d1637e17-92e8-af88-f163-1976daa3afed/mzaf_2075993691075174131.plus.aac.p.m4a",
+    "title": "崖上的波妞 (電影版)",
+    "artist": "久石讓",
+    "album": "崖上的波妞 動畫電影原聲帶",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_hisaishi_881802375": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/91/9d/74/919d7441-5633-b67c-720b-4aa025a40fb9/mzaf_7703302913147643646.plus.aac.p.m4a",
+    "title": "娜烏西卡‧安魂曲",
+    "artist": "久石讓",
+    "album": "風之谷 動畫電影原聲帶",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_hisaishi_883501738": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/39/47/d5/3947d5c0-6596-4c32-67ff-84f1e24c8f10/mzaf_6575161268669642002.plus.aac.p.m4a",
+    "title": "6番目の駅",
+    "artist": "久石讓",
+    "album": "神隱少女 動畫電影原聲帶",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_hisaishi_883501727": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/3a/f7/cc/3af7ccc3-6031-e85c-6e45-5ba195d7ec34/mzaf_13153043308261238377.plus.aac.p.m4a",
+    "title": "白龍少年",
+    "artist": "久石讓",
+    "album": "神隱少女 動畫電影原聲帶",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_hisaishi_882658780": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/3f/4e/49/3f4e49ec-bc58-ef4e-b7b0-2c4c5cee8951/mzaf_10623470045100497292.plus.aac.p.m4a",
+    "title": "能看見海的街道",
+    "artist": "久石讓",
+    "album": "魔女宅急便 動畫電影原聲帶",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_hisaishi_1680459434": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/15/66/8d/15668dff-a946-ca32-3031-c6ccaa4759cc/mzaf_12909950171759941780.plus.aac.p.m4a",
+    "title": "A Journey (A Dream of Flight) [From \"The Wind Rises\"]",
+    "artist": "久石讓 & 皇家愛樂管弦樂團",
+    "album": "A Symphonic Celebration (Music from the Studio Ghibli Films of Hayao Miyazaki)",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_hisaishi_1442556774": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/05/39/7d/05397d51-2b38-4e9b-f941-4a50d4ae85ee/mzaf_14986403717909117795.plus.aac.p.m4a",
+    "title": "Okuribito - Memory",
+    "artist": "久石讓",
+    "album": "Okuribito (Original Soundtrack) - EP",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_hisaishi_1485854961": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/b6/d8/6c/b6d86cc6-3c6b-8d4b-65b9-9d44c1ee942a/mzaf_8487044335158320294.plus.aac.p.m4a",
+    "title": "Oriental Wind",
+    "artist": "Joe Hisaishi",
+    "album": "Dream Songs: The Essential Joe Hisaishi",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_hisaishi_1485855015": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/59/30/39/5930397b-d2e9-a534-a1a9-c47331820dc9/mzaf_8451090603730756119.plus.aac.p.m4a",
+    "title": "Hana-Bi (from \"HANA-BI\")",
+    "artist": "Joe Hisaishi",
+    "album": "Dream Songs: The Essential Joe Hisaishi",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_hisaishi_1680459428": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/d8/06/94/d8069431-4223-ee2d-198f-79aa55e5b09a/mzaf_11213559915612779490.plus.aac.p.m4a",
+    "title": "Mother’s Broom (From \"Kiki's Delivery Service\")",
+    "artist": "久石讓 & 皇家愛樂管弦樂團",
+    "album": "A Symphonic Celebration (Music from the Studio Ghibli Films of Hayao Miyazaki)",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_hisaishi_1498700687": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/be/0c/be/be0cbe60-c11f-13da-8c14-1bff2c38deca/mzaf_5681518558597696571.plus.aac.p.m4a",
+    "title": "The Rain",
+    "artist": "久石讓",
+    "album": "Kikujiro (Original Motion Picture Soundtrack)",
     "offset": 0,
     "conf": "high"
   }

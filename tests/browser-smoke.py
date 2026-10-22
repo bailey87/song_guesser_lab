@@ -23,7 +23,7 @@ try:
         errors = []
         page.on('pageerror', lambda error: errors.append(str(error)))
         page.goto(url, wait_until='domcontentloaded')
-        assert page.locator('#library-info').inner_text().startswith('690')
+        assert page.locator('#library-info').inner_text().startswith('710')
         page.screenshot(path='/tmp/song-guesser-home.png')
         assert page.locator('#btn-speed').is_disabled()
         page.locator('#nick').fill('Test')
@@ -58,8 +58,8 @@ try:
         stage_ids = page.evaluate('G.questions.map(q=>q.song.id)')
         assert not set(speed_ids).intersection(stage_ids)
         assert page.evaluate('new Set(G.questions.map(q=>q.song.genre)).size') == 6
-        assert page.evaluate('stagePool(1).length') == 690
-        assert page.evaluate('stagePool(6).length') == 690
+        assert page.evaluate('stagePool(1).length') == 710
+        assert page.evaluate('stagePool(6).length') == 710
         for stage in range(1, 7):
             answer_round()
             assert page.locator('#pop').is_visible()

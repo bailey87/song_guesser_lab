@@ -1,4 +1,4 @@
-/* Song bank: 690 questions across six categories.
+/* Song bank: 710 questions across six categories.
  * Both modes open the full library immediately and use persistent rotation.
  * Expansion provenance: data/library-expansion-2026-10.json.
  */
@@ -711,4 +711,26 @@ window.SONGS = [
   {"id": "add_jp_1677103153", "title": "愛の花", "artist": "あいみょん", "genre": "jp"},
   {"id": "add_jp_1613179146", "title": "双葉", "artist": "あいみょん", "genre": "jp"},
   {"id": "add_jp_1753270224", "title": "ざらめ", "artist": "あいみょん", "genre": "jp"},
+
+  /* ---------- Joe Hisaishi: Japanese film music (+20) ---------- */
+  {"id": "add_jp_hisaishi_1498700482", "title": "Summer", "artist": "久石讓", "genre": "jp"},
+  {"id": "add_jp_hisaishi_883501723", "title": "那個夏天", "artist": "久石讓", "genre": "jp"},
+  {"id": "add_jp_hisaishi_883513433", "title": "人生的旋轉木馬", "artist": "久石讓", "genre": "jp"},
+  {"id": "add_jp_hisaishi_882410536", "title": "風之通道", "artist": "久石讓", "genre": "jp"},
+  {"id": "add_jp_hisaishi_882410542", "title": "隔壁的龍貓", "artist": "久石讓", "genre": "jp"},
+  {"id": "add_jp_hisaishi_882407940", "title": "伴隨著你", "artist": "久石讓", "genre": "jp"},
+  {"id": "add_jp_hisaishi_883501071", "title": "魔法公主", "artist": "久石讓", "genre": "jp"},
+  {"id": "add_jp_hisaishi_883501267", "title": "阿席達卡與小桑", "artist": "久石讓", "genre": "jp"},
+  {"id": "add_jp_hisaishi_883501052", "title": "阿席達卡傳奇", "artist": "久石讓", "genre": "jp"},
+  {"id": "add_jp_hisaishi_885295070", "title": "崖上的波妞", "artist": "久石讓", "genre": "jp"},
+  {"id": "add_jp_hisaishi_881802375", "title": "娜烏西卡安魂曲", "artist": "久石讓", "genre": "jp"},
+  {"id": "add_jp_hisaishi_883501738", "title": "第六號車站", "artist": "久石讓", "genre": "jp"},
+  {"id": "add_jp_hisaishi_883501727", "title": "白龍少年", "artist": "久石讓", "genre": "jp"},
+  {"id": "add_jp_hisaishi_882658780", "title": "能看見海的街道", "artist": "久石讓", "genre": "jp"},
+  {"id": "add_jp_hisaishi_1680459434", "title": "旅路・夢中飛行", "artist": "久石讓", "genre": "jp"},
+  {"id": "add_jp_hisaishi_1442556774", "title": "送行者・記憶", "artist": "久石讓", "genre": "jp"},
+  {"id": "add_jp_hisaishi_1485854961", "title": "Oriental Wind", "artist": "久石讓", "genre": "jp"},
+  {"id": "add_jp_hisaishi_1485855015", "title": "花火", "artist": "久石讓", "genre": "jp"},
+  {"id": "add_jp_hisaishi_1680459428", "title": "媽媽的掃帚", "artist": "久石讓", "genre": "jp"},
+  {"id": "add_jp_hisaishi_1498700687", "title": "The Rain", "artist": "久石讓", "genre": "jp"},
 ];

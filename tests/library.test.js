@@ -3,12 +3,12 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 global.window = {};
-require('../songs'); require('../previews'); require('../decoys');
+require('../songs'); require('../previews'); require('../decoys'); require('../named-decoys');
 const {SONGS, SONG_PREVIEWS, DECOYS} = window;
 const expansion = require('../data/library-expansion-2026-10.json');
 const clean = s => s.replace(/\s*[（(【\[].*$/, '').replace(/\s+[-–—]\s+.*$/, '').trim().toLowerCase();
-test('690 unique song IDs and exactly 50 new songs in every category', () => {
-  assert.equal(SONGS.length, 690);
+test('710 unique song IDs; initial expansion retains 50 songs per category', () => {
+  assert.equal(SONGS.length, 710);
   assert.equal(new Set(SONGS.map(s => s.id)).size, SONGS.length);
   assert.equal(expansion.songs.length, 300);
   for(const genre of ['mando','classic','tw','west','kpop','jp']){
@@ -38,4 +38,26 @@ test('retired shared leaderboard is not part of the current application', () => 
   for(const file of ['crew.js','staff.html','board-config.js']){
     assert(!fs.existsSync(path.join(__dirname,'..',file)));
   }
+});
+
+const hisaishi = require('../data/hisaishi-20.json');
+test('20 Joe Hisaishi works have eight distinct near-title distractors each', () => {
+  assert.equal(hisaishi.songs.length, 20);
+  assert.equal(SONGS.filter(s=>s.genre==='jp').length, 88);
+  const realTitles=new Set(SONGS.map(s=>clean(s.title)));
+  const sourceURLs=new Set();
+  for(const source of hisaishi.songs){
+    const song=SONGS.find(s=>s.id===source.id);
+    assert.equal(song.artist, '久石讓');
+    assert.equal(song.genre, 'jp');
+    assert.equal(song.title, source.title);
+    assert.equal(SONG_PREVIEWS[song.id].title, source.storeTitle);
+    assert.match(source.storeArtist, /久石|Joe Hisaishi/);
+    const labels=window.NAMED_DECOYS[song.id];
+    assert.equal(labels.length,8);
+    assert.equal(new Set(labels.map(clean)).size,8);
+    assert(labels.every(title=>!realTitles.has(clean(title))));
+    sourceURLs.add(SONG_PREVIEWS[song.id].url);
+  }
+  assert.equal(sourceURLs.size,20);
 });

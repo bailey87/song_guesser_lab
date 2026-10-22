@@ -634,6 +634,7 @@ input[type=text]:focus{outline:0;border-bottom-color:var(--foam)}
 <script src="decoys.js"></script>
 <script src="previews.js"></script>
 <script src="song-rotation.js"></script>
+<script src="named-decoys.js"></script>
 <script>
 /* Static single-player game. Audio streams from Apple; progress stays local. */
 
@@ -926,6 +927,16 @@ function buildQuestions(songs, floor){
     const options = [answer];
     const usedTitle = new Set([titleKey(answer.title)]);
     const byArtist = { [answer.artist]: 1 };
+
+    // These labels are intentionally invented and tied to this one question.
+    // They do not enter the real song pool or represent artist recordings.
+    for(const title of shuffle((window.NAMED_DECOYS || {})[answer.id] || [])){
+      if(options.length >= CONFIG.optionCount) break;
+      const key = titleKey(title);
+      if(usedTitle.has(key)) continue;
+      usedTitle.add(key);
+      options.push({ title, artist: answer.artist, genre: answer.genre, invented: true });
+    }
 
     // Prefer same-genre decoys. A Mandarin answer among English titles is
     // solvable by elimination, which collapses the nine-way choice.

@@ -33,7 +33,7 @@ const ARTISTS = {
   ],
   jp: [
     '米津玄師','YOASOBI','LiSA','Official髭男dism','RADWIMPS','Ado',
-    'King Gnu','back number','あいみょん','ONE OK ROCK'
+    'King Gnu','back number','あいみょん','ONE OK ROCK','久石讓'
   ]
 };
 
@@ -46,6 +46,7 @@ const ARTISTS = {
  * usually missing here.
  */
 const ALIAS = {
+  '久石讓': ['久石譲','久石让','Joe Hisaishi'],
   // K-pop
   'BTS': ['防彈少年團','방탄소년단'],
   'Girls\' Generation': ['少女時代','소녀시대'],
