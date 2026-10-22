@@ -1,4 +1,4 @@
-"""Exercise each Hisaishi question with real audio and all eight invented labels.
+"""Exercise each Hisaishi question with real audio and all eight real film themes.
 Uses a controlled single-question pool to inspect all 20, not normal random play.
 Requires Python Playwright, Chromium and a valid HTTPS trust configuration.
 """
@@ -24,7 +24,7 @@ try:
         errors=[]
         page.on('pageerror',lambda e:errors.append(str(e)))
         page.goto(f'http://127.0.0.1:{server.server_port}',wait_until='domcontentloaded')
-        assert '710' in page.locator('#library-info').inner_text()
+        assert '725' in page.locator('#library-info').inner_text()
         page.locator('#nick').fill('MusicTest');page.locator('#btn-test').click()
         page.evaluate('''() => {
             CONFIG.revealMs=10;
@@ -44,14 +44,14 @@ try:
                 const q=G.questions[0];
                 return {id:q.song.id,title:q.song.title,
                     options:Array.from(document.querySelectorAll('#grid button'),b=>b.textContent),
-                    expected:[q.song.title,...NAMED_DECOYS[q.song.id]],
-                    invented:q.options.filter(o=>o.invented).length,
+                    expectedTitles:GHIBLI_THEMES.map(t=>t.title),
+                    themeOptions:q.options.filter(o=>o.themeOption).length,
                     answerIndex:q.options.indexOf(q.song),
                     audioSource:q.audio.source,playbackSeconds:q.audio.el.currentTime};
             }''')
             assert len(observed['options'])==9 and len(set(observed['options']))==9
-            assert set(observed.pop('expected'))==set(observed['options'])
-            assert observed['invented']==8
+            assert set(observed['options']).issubset(set(observed.pop('expectedTitles')))
+            assert observed['themeOptions']==8
             if i==0:page.screenshot(path='/tmp/hisaishi-grid.png')
             page.locator('#grid button').nth(observed.pop('answerIndex')).click()
             page.wait_for_function('G.index===1 && !document.querySelector("#screen-result").hidden')
@@ -68,6 +68,6 @@ try:
         }''')
         browser.close()
     Path('/tmp/hisaishi-browser-results.json').write_text(json.dumps(results,ensure_ascii=False,indent=2)+'\n')
-    print('PASS: 20/20 audio and invented-option questions; ordinary questions unchanged',flush=True)
+    print('PASS: 20/20 audio and real-theme-option questions; ordinary questions unchanged',flush=True)
 finally:
     server.shutdown();server.server_close()

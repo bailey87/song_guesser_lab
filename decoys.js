@@ -1,4 +1,4 @@
-/* Static decoy titles; expanded question-bank entries removed. */
+/* Real-song distractor titles; question-bank duplicates removed. */
 window.DECOYS = [
  {
   "title": "那天下雨了",
@@ -2032,11 +2032,6 @@ window.DECOYS = [
  },
  {
   "title": "115 Million Kilometer Film",
-  "artist": "Official鬍子男dism",
-  "genre": "jp"
- },
- {
-  "title": "Cry Baby",
   "artist": "Official鬍子男dism",
   "genre": "jp"
  },

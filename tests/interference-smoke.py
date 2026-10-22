@@ -25,24 +25,24 @@ try:
         pair=page.evaluate('''() => {
             const q=G.questions[0];window.checkedPair=q;
             return {original:q.song.title,interference:q.interference.song.title,
-              realCount:q.options.filter(o=>!o.invented).length,
-              fakeCounts:[q.options.filter(o=>o.basedOn===q.song.id).length,q.options.filter(o=>o.basedOn===q.interference.song.id).length]};
+              realCount:q.options.filter(o=>!o.themeOption).length,
+              themeCount:q.options.filter(o=>o.themeOption).length,allReal:q.options.every(o=>!o.invented)};
         }''')
-        assert pair['realCount']==2 and sorted(pair['fakeCounts'])==[3,4]
+        assert pair['realCount']==2 and pair['themeCount']==7 and pair['allReal']
         page.wait_for_function('G.clip.triggered && G.questions[0].interference.audio.el.currentTime>0',timeout=12000)
         timing=page.evaluate('({start:G.clip.startedAtPrimarySeconds,primary:G.clip.primary.volume,secondary:G.clip.interference.volume,primaryPlaying:!G.clip.primary.paused,secondaryPlaying:!G.clip.interference.paused})')
-        assert 2<=timing['start']<=2.3,timing
+        assert 2.5<=timing['start']<=2.8,timing
         assert timing['primaryPlaying'] and timing['secondaryPlaying']
-        assert abs(timing['secondary']/timing['primary']-.7)<1e-8
+        assert abs(timing['secondary']/timing['primary']-.5)<1e-8
         page.evaluate('setVolume(.4)')
-        assert page.evaluate('Math.abs(G.clip.interference.volume-.28)<1e-8 && G.clip.primary.volume===.4')
+        assert page.evaluate('Math.abs(G.clip.interference.volume-.2)<1e-8 && G.clip.primary.volume===.4')
         page.screenshot(path='/tmp/interference-demo-playing.png')
         observations.append({**pair,**timing})
         # Deliberately select the actual interfering song: it must be wrong.
         page.evaluate("document.querySelectorAll('#grid button')[G.questions[0].options.indexOf(G.questions[0].interference.song)].click()")
         assert page.evaluate('G.log.length===1 && !G.log[0].correct && G.total===0')
         assert page.evaluate('checkedPair.audio.el.paused && checkedPair.interference.audio.el.paused')
-        print('PASS real dual playback at 2 seconds, 70% volume and wrong interference answer',flush=True)
+        print('PASS real dual playback at 2.5 seconds, 50% volume and wrong interference answer',flush=True)
         # Complete the remaining nine questions, waiting for both real streams.
         page.evaluate('''() => {
             window.demoObserved=[];
@@ -56,7 +56,7 @@ try:
         page.wait_for_function('G.index===10 && !document.querySelector("#screen-result").hidden',timeout=180000)
         assert page.evaluate('G.log.filter(x=>x.correct).length')==9
         observations.extend(page.evaluate('demoObserved'))
-        assert all(2<=x['at']<=2.3 for x in observations[1:])
+        assert all(2.5<=x['at']<=2.8 for x in observations[1:])
         print('PASS complete 10-question Hisaishi interference round',flush=True)
         page.locator('#btn-home').click();page.evaluate('CONFIG.questionCount=1')
         # Real 12-second expiry must stop both players.
@@ -72,7 +72,7 @@ try:
             window.earlyClip=G.clip;
             document.querySelectorAll('#grid button')[G.questions[0].options.indexOf(G.questions[0].song)].click();
         }''')
-        page.wait_for_timeout(2400)
+        page.wait_for_timeout(2900)
         assert page.evaluate('earlyClip.stopped && !earlyClip.triggered && earlyClip.primary.paused && earlyClip.interference.paused')
         print('PASS early answer cancels delayed interference',flush=True)
         # Simulate a failed secondary load, then exercise the real retry button.
@@ -100,7 +100,7 @@ try:
         assert page.evaluate('G.questions[0].song.artist!=="久石讓" && !G.clip.primary.paused && !G.clip.interference.paused')
         page.evaluate("document.querySelectorAll('#grid button')[G.questions[0].options.indexOf(G.questions[0].song)].click()")
         print('PASS ordinary-song real dual playback',flush=True)
-        # Standard game stays single-track with eight invented Hisaishi labels.
+        # Standard game stays single-track with eight real Miyazaki theme labels.
         page.goto(url+'/index.html',wait_until='domcontentloaded')
         assert page.evaluate('!DEMO.enabled && buildQuestions(SONGS,CONFIG.floor).every(q=>!q.interference)')
         assert not errors,errors

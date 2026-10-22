@@ -63,19 +63,10 @@ body{
   text-wrap:pretty;
 }
 
-/* Hero image.
-   webp, not png: same picture, 1038KB -> 82KB (quality 90). It is the
-   largest single download for a first-time visitor — about 80% of the page
-   weight. theme.png stays in assets/ as the master; nothing links to it.
-
-   On a portrait phone, `cover` crops to the middle 20% of the image, which
-   is exactly where the "NTUPM 18TH" wordmark sits — it would collide with
-   the page title. Shifted to 90% so we see the gramophone side instead.
-   The scrim is near-opaque by 32%; text starts at 37%. */
+/* Generated minimalist piano wallpaper; the upper-left detail survives mobile cropping. */
 body::before{
   content:"";position:fixed;inset:0;z-index:-2;
-  background:url("assets/theme.webp") 90% center/cover no-repeat;
-  filter:brightness(1.10) saturate(1.1);
+  background:url("assets/theme.webp?v=music-20261022") left top/cover no-repeat;
 }
 body::after{
   content:"";position:fixed;inset:0;z-index:-1;
@@ -640,7 +631,7 @@ input[type=text]:focus{outline:0;border-bottom-color:var(--foam)}
 <script src="decoys.js"></script>
 <script src="previews.js"></script>
 <script src="song-rotation.js"></script>
-<script src="named-decoys.js"></script>
+<script src="ghibli-themes.js"></script>
 <script src="interference-options.js"></script>
 <script src="dual-audio.js"></script>
 <script>
@@ -721,7 +712,7 @@ function setVolume(v){
   // applies live to prepared clips and to the synth fallback
   (G.questions || []).forEach(q => {
     if(q.audio?.el) q.audio.el.volume = volume;
-    if(q.interference?.audio?.el) q.interference.audio.el.volume = volume * .7;
+    if(q.interference?.audio?.el) q.interference.audio.el.volume = volume * .5;
   });
   if(G.clip && G.clip.setVolume) G.clip.setVolume(volume);
 
@@ -948,7 +939,7 @@ function buildQuestions(songs, floor){
     if(DEMO.enabled){
       ({ options, interferenceSong } = InterferenceOptions.build(answer, {
         songs: window.SONGS, decoys: window.DECOYS || [], previews: window.SONG_PREVIEWS || {},
-        namedDecoys: window.NAMED_DECOYS || {}, shuffle, titleKey,
+        themeOptions: window.GHIBLI_THEMES || [], shuffle, titleKey,
         maxSameArtist: CONFIG.maxSameArtist
       }));
     }else{
@@ -956,14 +947,16 @@ function buildQuestions(songs, floor){
     const usedTitle = new Set([titleKey(answer.title)]);
     const byArtist = { [answer.artist]: 1 };
 
-    // These labels are intentionally invented and tied to this one question.
-    // They do not enter the real song pool or represent artist recordings.
-    for(const title of shuffle((window.NAMED_DECOYS || {})[answer.id] || [])){
-      if(options.length >= CONFIG.optionCount) break;
-      const key = titleKey(title);
-      if(usedTitle.has(key)) continue;
-      usedTitle.add(key);
-      options.push({ title, artist: answer.artist, genre: answer.genre, invented: true });
+    // Film-music questions use real Miyazaki themes, including catalog-only options.
+    if(answer.artist === '久石讓'){
+      const works = new Set([(window.GHIBLI_THEMES || []).find(t => t.questionId === answer.id)?.workKey]);
+      for(const theme of shuffle(window.GHIBLI_THEMES || [])){
+        if(options.length >= CONFIG.optionCount) break;
+        const key = titleKey(theme.title);
+        if(usedTitle.has(key) || works.has(theme.workKey)) continue;
+        usedTitle.add(key);works.add(theme.workKey);
+        options.push({title: theme.title, artist: theme.artist, genre: 'jp', themeOption: true, themeFilm: theme.film});
+      }
     }
 
     // Prefer same-genre decoys. A Mandarin answer among English titles is
@@ -1533,7 +1526,7 @@ if(DEMO.enabled){
   $('demo-links').hidden = false;
   $('demo-entry').hidden = true;
   document.querySelector('.eyebrow').textContent = '雙曲干擾 DEMO';
-  document.querySelector('.slogan').textContent = '第一首才是正解。原曲播放兩秒後，加入 70% 音量的干擾曲。';
+  document.querySelector('.slogan').textContent = '第一首才是正解。原曲播放 2.5 秒後，加入 50% 音量的干擾曲。';
 }
 </script>
 </body>

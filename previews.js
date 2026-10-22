@@ -1,8 +1,4 @@
-/* Official Apple preview URL mappings.
- * Original entries retained; 320 catalog-matched entries added 2026-10-22.
- * conf describes catalog matching, not a guarantee of the recording or URL.
- * Audio is streamed by the browser, not bundled in this repository.
- */
+/* Official Apple preview mappings. Source manifests in data/. */
 window.SONG_PREVIEWS = {
   "daoxiang": {
     "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/af/d8/da/afd8daa7-b2aa-fb44-b4e0-258ad25187f5/mzaf_18323630198043973445.plus.aac.p.m4a",
@@ -4740,27 +4736,11 @@ window.SONG_PREVIEWS = {
     "offset": 0,
     "conf": "high"
   },
-  "add_jp_1676871814": {
-    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/5c/5b/1b/5c5b1b6e-4054-6bd9-54ea-dab044a9a99b/mzaf_14354974032468270921.plus.aac.p.m4a",
-    "title": "LADY",
-    "artist": "米津玄師",
-    "album": "LADY - Single",
-    "offset": 0,
-    "conf": "high"
-  },
   "add_jp_1621463792": {
     "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/bc/f3/48/bcf348b0-7bdb-9f03-688e-211a4ee23eb9/mzaf_1008786234615776517.plus.aac.p.m4a",
     "title": "M八七",
     "artist": "米津玄師",
     "album": "M八七 - Single",
-    "offset": 0,
-    "conf": "high"
-  },
-  "add_jp_1606890892": {
-    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/65/ee/7f/65ee7f6d-ae58-9abc-a9f4-1fdd3853505c/mzaf_4782801107744505955.plus.aac.p.m4a",
-    "title": "POP SONG",
-    "artist": "米津玄師",
-    "album": "POP SONG - Single",
     "offset": 0,
     "conf": "high"
   },
@@ -4777,14 +4757,6 @@ window.SONG_PREVIEWS = {
     "title": "さよーならまたいつか!- Sayonara",
     "artist": "米津玄師",
     "album": "さよーならまたいつか!- Sayonara - Single",
-    "offset": 0,
-    "conf": "high"
-  },
-  "add_jp_1759899378": {
-    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/97/86/ff/9786ffe0-4d41-6b75-9cae-740d309821b9/mzaf_12691685362962680957.plus.aac.p.m4a",
-    "title": "がらくた - JUNK",
-    "artist": "米津玄師",
-    "album": "LOST CORNER",
     "offset": 0,
     "conf": "high"
   },
@@ -4833,14 +4805,6 @@ window.SONG_PREVIEWS = {
     "title": "アドベンチャー",
     "artist": "YOASOBI",
     "album": "アドベンチャー - Single",
-    "offset": 0,
-    "conf": "high"
-  },
-  "add_jp_1607976611": {
-    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/e7/70/1a/e7701a15-9ad8-0e64-3915-135462953d89/mzaf_10000207126805022904.plus.aac.p.m4a",
-    "title": "ミスター",
-    "artist": "YOASOBI",
-    "album": "ミスター - Single",
     "offset": 0,
     "conf": "high"
   },
@@ -4916,46 +4880,6 @@ window.SONG_PREVIEWS = {
     "offset": 0,
     "conf": "high"
   },
-  "add_jp_1731265572": {
-    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/36/84/ba/3684bab8-8adc-eaa7-008b-e14e385f3b21/mzaf_11675973815017219558.plus.aac.p.m4a",
-    "title": "Value",
-    "artist": "Ado",
-    "album": "Value - Single",
-    "offset": 0,
-    "conf": "high"
-  },
-  "add_jp_1746901893": {
-    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/8d/b0/a7/8db0a76f-546a-5364-106a-71c750ab1838/mzaf_5082546230014284375.plus.aac.p.m4a",
-    "title": "MIRROR",
-    "artist": "Ado",
-    "album": "MIRROR - Single",
-    "offset": 0,
-    "conf": "high"
-  },
-  "add_jp_1754263834": {
-    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/45/ec/e9/45ece972-c2b7-6a9d-5945-aa7b38f304c8/mzaf_15680014779106587041.plus.aac.p.m4a",
-    "title": "RuLe",
-    "artist": "Ado",
-    "album": "Zanmu",
-    "offset": 0,
-    "conf": "high"
-  },
-  "add_jp_1789478393": {
-    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/49/d3/ae/49d3ae06-e3fc-6558-9634-888126916af4/mzaf_11920217055945111432.plus.aac.p.m4a",
-    "title": "Elf",
-    "artist": "Ado",
-    "album": "Elf - Single",
-    "offset": 0,
-    "conf": "high"
-  },
-  "add_jp_1781190972": {
-    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/01/1e/b6/011eb6b8-9640-7acf-6989-a9a86d91bae0/mzaf_8235567585648599523.plus.aac.p.m4a",
-    "title": "Episode X",
-    "artist": "Ado",
-    "album": "Episode X - Single",
-    "offset": 0,
-    "conf": "high"
-  },
   "add_jp_1648108988": {
     "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/e1/e1/78/e1e1784d-ec42-bdc5-b40a-9eedda88668d/mzaf_1015486412126374844.plus.aac.p.m4a",
     "title": "Subtitle",
@@ -4980,43 +4904,11 @@ window.SONG_PREVIEWS = {
     "offset": 0,
     "conf": "high"
   },
-  "add_jp_1681217026": {
-    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/5c/fb/91/5cfb91ab-5ea4-e837-703e-163a0b0f0392/mzaf_1746522863780561729.plus.aac.p.m4a",
-    "title": "TATTOO",
-    "artist": "Official鬍子男dism",
-    "album": "TATTOO - Single",
-    "offset": 0,
-    "conf": "high"
-  },
   "add_jp_1717747959": {
     "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/7a/57/26/7a5726be-9f2e-d30c-6196-092e2b5e4bd2/mzaf_8693233597226337315.plus.aac.p.m4a",
     "title": "SOULSOUP",
     "artist": "Official鬍子男dism",
     "album": "SOULSOUP - Single",
-    "offset": 0,
-    "conf": "high"
-  },
-  "add_jp_1768218701": {
-    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/0e/5d/92/0e5d92f5-17b1-0b46-af7d-f72ad7e78614/mzaf_17020336874762690964.plus.aac.p.m4a",
-    "title": "Same Blue",
-    "artist": "Official鬍子男dism",
-    "album": "Same Blue - Single",
-    "offset": 0,
-    "conf": "high"
-  },
-  "add_jp_1703522966": {
-    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/b8/82/22/b8822264-e65a-63dd-e5b8-ffffa55e9b1e/mzaf_8238680242976629609.plus.aac.p.m4a",
-    "title": "日常",
-    "artist": "Official鬍子男dism",
-    "album": "日常 - Single",
-    "offset": 0,
-    "conf": "high"
-  },
-  "add_jp_1698477924": {
-    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/7b/25/1b/7b251bbd-0542-b92d-6fa5-2bdb549a9dec/mzaf_11552983186911720404.plus.aac.p.m4a",
-    "title": "Chessboard",
-    "artist": "Official鬍子男dism",
-    "album": "Chessboard - Single",
     "offset": 0,
     "conf": "high"
   },
@@ -5033,22 +4925,6 @@ window.SONG_PREVIEWS = {
     "title": "一途",
     "artist": "King Gnu",
     "album": "一途 - Single",
-    "offset": 0,
-    "conf": "high"
-  },
-  "add_jp_1609217181": {
-    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/99/bd/3c/99bd3c84-12c7-014e-d936-c82a118d9056/mzaf_13032925082872488460.plus.aac.p.m4a",
-    "title": "カメレオン",
-    "artist": "King Gnu",
-    "album": "カメレオン - Single",
-    "offset": 0,
-    "conf": "high"
-  },
-  "add_jp_1632187265": {
-    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/1b/b4/5b/1bb45b18-21cd-2f84-aeb1-4034662a9a15/mzaf_7590808393844108713.plus.aac.p.m4a",
-    "title": "雨燦々",
-    "artist": "King Gnu",
-    "album": "雨燦々 - Single",
     "offset": 0,
     "conf": "high"
   },
@@ -5081,46 +4957,6 @@ window.SONG_PREVIEWS = {
     "title": "ReawakeR (feat. Felix of Stray Kids)",
     "artist": "LiSA feat. Felix of Stray Kids",
     "album": "ReawakeR (feat. Felix of Stray Kids) - Single",
-    "offset": 0,
-    "conf": "high"
-  },
-  "add_jp_1653123440": {
-    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/47/fc/bd/47fcbd94-a84f-b158-3306-13305afee49a/mzaf_10884565625035665404.plus.aac.p.m4a",
-    "title": "I Love You",
-    "artist": "back number",
-    "album": "HUMOR",
-    "offset": 0,
-    "conf": "high"
-  },
-  "add_jp_1723932449": {
-    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/de/fa/05/defa0503-9d51-faa7-6df2-d53fe4f73e77/mzaf_16170693014727327092.plus.aac.p.m4a",
-    "title": "Winter & Spring",
-    "artist": "back number",
-    "album": "Winter & Spring - Single",
-    "offset": 0,
-    "conf": "high"
-  },
-  "add_jp_1677103153": {
-    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/be/5a/3c/be5a3ca7-defa-ff2b-0c80-3227101cf085/mzaf_14386521550268251289.plus.aac.p.m4a",
-    "title": "ai no hana",
-    "artist": "あいみょん",
-    "album": "ai no hana - EP",
-    "offset": 0,
-    "conf": "high"
-  },
-  "add_jp_1613179146": {
-    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/22/ee/ec/22eeec08-de55-9dea-0aad-94dc9047f7e3/mzaf_2098240546978832580.plus.aac.p.m4a",
-    "title": "Futaba",
-    "artist": "あいみょん",
-    "album": "Futaba - Single",
-    "offset": 0,
-    "conf": "high"
-  },
-  "add_jp_1753270224": {
-    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/e7/8c/32/e78c32c6-0388-9767-1978-641074707f6c/mzaf_36675646033909012.plus.aac.p.m4a",
-    "title": "Zarame",
-    "artist": "あいみょん",
-    "album": "Jealous of Cats",
     "offset": 0,
     "conf": "high"
   },
@@ -5524,14 +5360,6 @@ window.SONG_PREVIEWS = {
     "offset": 0,
     "conf": "high"
   },
-  "add_jp_hisaishi_1498700482": {
-    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/72/15/1d/72151daa-4bc4-e757-003b-03d8bfdb5474/mzaf_8123774891067663580.plus.aac.p.m4a",
-    "title": "Summer",
-    "artist": "久石讓",
-    "album": "Kikujiro (Original Motion Picture Soundtrack)",
-    "offset": 0,
-    "conf": "high"
-  },
   "add_jp_hisaishi_883501723": {
     "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/a2/bf/a2/a2bfa255-786b-551c-2433-f40d5b7cbb6e/mzaf_6741552970465711655.plus.aac.p.m4a",
     "title": "那個夏天",
@@ -5644,30 +5472,6 @@ window.SONG_PREVIEWS = {
     "offset": 0,
     "conf": "high"
   },
-  "add_jp_hisaishi_1442556774": {
-    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/05/39/7d/05397d51-2b38-4e9b-f941-4a50d4ae85ee/mzaf_14986403717909117795.plus.aac.p.m4a",
-    "title": "Okuribito - Memory",
-    "artist": "久石讓",
-    "album": "Okuribito (Original Soundtrack) - EP",
-    "offset": 0,
-    "conf": "high"
-  },
-  "add_jp_hisaishi_1485854961": {
-    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/b6/d8/6c/b6d86cc6-3c6b-8d4b-65b9-9d44c1ee942a/mzaf_8487044335158320294.plus.aac.p.m4a",
-    "title": "Oriental Wind",
-    "artist": "Joe Hisaishi",
-    "album": "Dream Songs: The Essential Joe Hisaishi",
-    "offset": 0,
-    "conf": "high"
-  },
-  "add_jp_hisaishi_1485855015": {
-    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/59/30/39/5930397b-d2e9-a534-a1a9-c47331820dc9/mzaf_8451090603730756119.plus.aac.p.m4a",
-    "title": "Hana-Bi (from \"HANA-BI\")",
-    "artist": "Joe Hisaishi",
-    "album": "Dream Songs: The Essential Joe Hisaishi",
-    "offset": 0,
-    "conf": "high"
-  },
   "add_jp_hisaishi_1680459428": {
     "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/d8/06/94/d8069431-4223-ee2d-198f-79aa55e5b09a/mzaf_11213559915612779490.plus.aac.p.m4a",
     "title": "Mother’s Broom (From \"Kiki's Delivery Service\")",
@@ -5676,11 +5480,323 @@ window.SONG_PREVIEWS = {
     "offset": 0,
     "conf": "high"
   },
-  "add_jp_hisaishi_1498700687": {
-    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/be/0c/be/be0cbe60-c11f-13da-8c14-1bff2c38deca/mzaf_5681518558597696571.plus.aac.p.m4a",
-    "title": "The Rain",
+  "add_jp_hisaishi_881802224": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/c2/d8/53/c2d853a4-0286-edb1-a5bf-c14a51b12091/mzaf_6596315567780311816.plus.aac.p.m4a",
+    "title": "風之谷的娜烏西卡",
     "artist": "久石讓",
-    "album": "Kikujiro (Original Motion Picture Soundtrack)",
+    "album": "風之谷 動畫電影原聲帶",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_hisaishi_882407916": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/ec/3b/1c/ec3b1cf9-9987-eb4b-8977-1704a1d151ed/mzaf_13866006085916056968.plus.aac.p.m4a",
+    "title": "從天而降的少女",
+    "artist": "久石讓",
+    "album": "天空之城 動畫電影原聲帶 飛行石之謎",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_hisaishi_882410524": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/f7/21/cf/f721cff2-ca6a-385c-0e32-50ef1cc0b3ab/mzaf_11793862421722892538.plus.aac.p.m4a",
+    "title": "散步",
+    "artist": "久石讓",
+    "album": "龍貓 動畫電影原聲帶",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_hisaishi_883501745": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/15/be/2b/15be2b8b-9ab1-6b27-1dff-98065f356aba/mzaf_10213107433348699194.plus.aac.p.m4a",
+    "title": "重新開始",
+    "artist": "久石讓",
+    "album": "神隱少女 動畫電影原聲帶",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_hisaishi_883013100": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/97/e2/68/97e268a2-5b3b-3102-85e9-3c265398d6a2/mzaf_6339283128543643934.plus.aac.p.m4a",
+    "title": "飛向亞德里亞海",
+    "artist": "久石讓",
+    "album": "紅豬 動畫電影原聲帶",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_1535535911": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/47/d8/df/47d8df4c-f4ea-aa54-ca53-a7028c14e009/mzaf_10498383233375963447.plus.aac.p.m4a",
+    "title": "unravel",
+    "artist": "TK from 凛として時雨",
+    "album": "unravel - Single",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_666788983": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/2a/40/a2/2a40a2cb-db11-cba9-1cf5-3af116422559/mzaf_13163169508142169061.plus.aac.p.m4a",
+    "title": "紅蓮の弓矢",
+    "artist": "Linked Horizon",
+    "album": "自由への進撃 - Single",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_1229977150": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/79/07/f9/7907f947-b24b-ab06-6475-40a16a0574d3/mzaf_10430669270296508039.plus.aac.p.m4a",
+    "title": "心臓を捧げよ!",
+    "artist": "Linked Horizon",
+    "album": "進撃の軌跡",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_1538275660": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/55/c0/aa/55c0aaf3-d74d-9b62-4126-63d9c0345561/mzaf_6612008514607888435.plus.aac.p.m4a",
+    "title": "ピースサイン - Peace Sign",
+    "artist": "米津玄師",
+    "album": "BOOTLEG",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_1692289314": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/92/c9/7a/92c97ab2-5fdd-d00b-34eb-b2b58cd3c610/mzaf_15460441178714099183.plus.aac.p.m4a",
+    "title": "青のすみか",
+    "artist": "キタニタツヤ",
+    "album": "青のすみか - Single",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_1795905600": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/06/6d/74/066d7479-0637-3ca1-5cae-b6c02c05f37c/mzaf_12516734130021276373.plus.aac.p.m4a",
+    "title": "怪獣",
+    "artist": "サカナクション",
+    "album": "怪獣 - Single",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_1600223385": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/d6/7b/19/d67b1925-8936-d652-085d-31bd38b46087/mzaf_15125331200186203967.plus.aac.p.m4a",
+    "title": "裸の勇者",
+    "artist": "Vaundy",
+    "album": "裸の勇者 - EP",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_1536455325": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/a3/2d/30/a32d3000-d7f7-7ea6-84aa-eeb75f59a77f/mzaf_17358718327449677674.plus.aac.p.m4a",
+    "title": "シルエット",
+    "artist": "KANA-BOON",
+    "album": "シルエット - Single",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_1536263347": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/46/1f/6f/461f6f3e-038f-25a4-f445-8a1645c633f5/mzaf_16588168434801087108.plus.aac.p.m4a",
+    "title": "ブルーバード",
+    "artist": "いきものがかり",
+    "album": "いきものばかり〜メンバーズBESTセレクション〜",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_1536382006": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/5d/a7/c3/5da7c37b-7516-eeeb-4f9c-a65ffcc33189/mzaf_961849683140294438.plus.aac.p.m4a",
+    "title": "Sign",
+    "artist": "FLOW",
+    "album": "MICROCOSM",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_1536482652": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/14/a8/ed/14a8ed88-36b8-7e82-b85b-4ff2973bebe5/mzaf_4481580020851736819.plus.aac.p.m4a",
+    "title": "COLORS",
+    "artist": "FLOW",
+    "album": "COLORS - EP",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_1538284654": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/99/0b/81/990b815e-92f5-05da-5db9-963fdd5a45dd/mzaf_17650260699546701561.plus.aac.p.m4a",
+    "title": "crossing field",
+    "artist": "LiSA",
+    "album": "LANDSPACE",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_1537786181": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/22/6b/60/226b60e3-bf22-3c77-13fe-d9cefae6cffd/mzaf_2446628658470413257.plus.aac.p.m4a",
+    "title": "oath sign",
+    "artist": "LiSA",
+    "album": "LOVER\"S\"MiLE",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_1569670222": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/9e/fe/17/9efe175d-b5ec-aa6f-9925-2a00307621e0/mzaf_10821230321663589055.plus.aac.p.m4a",
+    "title": "IGNITE",
+    "artist": "藍井エイル",
+    "album": "D'AZUR",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_1537241619": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/49/0f/4f/490f4f5e-bfeb-4127-0db0-9a1d1728592d/mzaf_3470677867335932349.plus.aac.p.m4a",
+    "title": "コネクト",
+    "artist": "ClariS",
+    "album": "コネクト - EP",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_1804664579": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/15/62/9f/15629f3b-0529-37ec-cd2a-c1565e5bc743/mzaf_3777364014956998446.plus.aac.p.m4a",
+    "title": "only my railgun",
+    "artist": "fripSide",
+    "album": "only my railgun - EP",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_1128654728": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/2c/64/a2/2c64a2e4-4252-4d38-70dd-3673cc0b02b1/mzaf_1164499905947000690.plus.aac.p.m4a",
+    "title": "シュガーソングとビターステップ",
+    "artist": "UNISON SQUARE GARDEN",
+    "album": "Dr.Izzy",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_1535617596": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/5a/28/8e/5a288e76-5276-eb24-4621-0702a27c9c00/mzaf_25025913697395051.plus.aac.p.m4a",
+    "title": "イマジネーション",
+    "artist": "SPYAIR",
+    "album": "イマジネーション - Single",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_1728595882": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/e5/26/db/e526dbbb-f107-57fb-8783-9feea7eb7844/mzaf_13628143605540446538.plus.aac.p.m4a",
+    "title": "オレンジ",
+    "artist": "SPYAIR",
+    "album": "オレンジ",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_1563683060": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/3b/fb/b9/3bfbb919-71d2-7358-a0c8-f39b6381a442/mzaf_8987359075267074414.plus.aac.p.m4a",
+    "title": "Cry Baby",
+    "artist": "Official髭男dism",
+    "album": "Cry Baby - Single",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_1525236534": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/7f/7a/a3/7f7aa36e-c875-46cf-7753-7b20f658453c/mzaf_13476907837332362030.plus.aac.p.m4a",
+    "title": "DREAMIN' ON",
+    "artist": "Da-iCE",
+    "album": "DREAMIN' ON -Special Edition- - EP",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_890355478": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/c8/7e/a2/c87ea27a-468b-e4f8-d4da-9a11f9c133ae/mzaf_17231391694563295754.plus.aac.p.m4a",
+    "title": "Wake up!",
+    "artist": "AAA",
+    "album": "Wake up! - Single",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_1479568065": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ca/3b/06/ca3b065f-f32c-57b0-cfe9-3f3790cc09b0/mzaf_8400375317134706580.plus.aac.p.m4a",
+    "title": "OVER THE TOP",
+    "artist": "きただにひろし",
+    "album": "OVER THE TOP - EP",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_996892107": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/46/5e/e9/465ee9e2-0a89-a17a-50ad-bf634983091d/mzaf_13513681543251932443.plus.aac.p.m4a",
+    "title": "HANDS UP !",
+    "artist": "新里宏太",
+    "album": "HANDS UP! - EP",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_465036713": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/c0/3d/03/c03d0376-b242-a4f3-5055-995dbd92daca/mzaf_5051340701767996210.plus.aac.p.m4a",
+    "title": "One day",
+    "artist": "The ROOTLESS",
+    "album": "The ROOTLESS",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_1408505264": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/f5/3b/d0/f53bd0e2-b10f-c1f6-41c4-743fa1d042de/mzaf_18355465102728204177.plus.aac.p.m4a",
+    "title": "青と夏",
+    "artist": "Mrs. GREEN APPLE",
+    "album": "青と夏 - EP",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_1648865575": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/3a/f6/00/3af60019-4319-4f3c-8183-983c9c4e55d9/mzaf_11855037906783799062.plus.aac.p.m4a",
+    "title": "Soranji",
+    "artist": "Mrs. GREEN APPLE",
+    "album": "Soranji - Single",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_1817561951": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/2e/cd/5f/2ecd5f4d-e474-3a22-7645-0703ba87c155/mzaf_1941443316167836626.plus.aac.p.m4a",
+    "title": "breakfast",
+    "artist": "Mrs. GREEN APPLE",
+    "album": "breakfast - Single",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_1810410952": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/a4/71/6e/a4716e47-ae55-1e6e-5169-e584b90ba910/mzaf_14356330504483708824.plus.aac.p.m4a",
+    "title": "天国",
+    "artist": "Mrs. GREEN APPLE",
+    "album": "天国 - Single",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_1471459432": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/70/25/37/70253773-995d-296e-19db-6a2457b9f3db/mzaf_2716666302310961916.plus.aac.p.m4a",
+    "title": "インフェルノ",
+    "artist": "Mrs. GREEN APPLE",
+    "album": "インフェルノ - Single",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_1681600508": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/17/68/15/17681535-6c5b-481a-06e9-6bd4dbe5cc53/mzaf_15277657640010461244.plus.aac.p.m4a",
+    "title": "ケセラセラ",
+    "artist": "Mrs. GREEN APPLE",
+    "album": "ケセラセラ - Single",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_1804230388": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/31/47/f1/3147f1cc-c7d3-7124-d2b0-6f409d573453/mzaf_12663237808785530670.plus.aac.p.m4a",
+    "title": "クスシキ",
+    "artist": "Mrs. GREEN APPLE",
+    "album": "クスシキ - Single",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_1739088799": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/0a/c4/5d/0ac45d4d-62ad-9609-4528-78c849392f49/mzaf_15781851599354670952.plus.aac.p.m4a",
+    "title": "ライラック",
+    "artist": "Mrs. GREEN APPLE",
+    "album": "ライラック - Single",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_1691229799": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/62/36/50/62365059-c4b3-f260-58ed-bc8d3cad3903/mzaf_5410871197774662180.plus.aac.p.m4a",
+    "title": "ANTENNA",
+    "artist": "Mrs. GREEN APPLE",
+    "album": "ANTENNA",
+    "offset": 0,
+    "conf": "high"
+  },
+  "add_jp_1754080057": {
+    "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/67/95/c6/6795c602-d73c-a0b3-ef9b-843cd585fc07/mzaf_2699364172000065904.plus.aac.p.m4a",
+    "title": "アポロドロス",
+    "artist": "Mrs. GREEN APPLE",
+    "album": "アポロドロス - Single",
     "offset": 0,
     "conf": "high"
   }

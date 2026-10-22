@@ -33,7 +33,8 @@ const ARTISTS = {
   ],
   jp: [
     '米津玄師','YOASOBI','LiSA','Official髭男dism','RADWIMPS','Ado',
-    'King Gnu','back number','あいみょん','ONE OK ROCK','久石讓'
+    'King Gnu','back number','あいみょん','ONE OK ROCK','久石讓',
+    "AAA","ClariS","Da-iCE","FLOW","KANA-BOON","Linked Horizon","Mrs. GREEN APPLE","SPYAIR","TK from 凛として時雨","The ROOTLESS","UNISON SQUARE GARDEN","Vaundy","fripSide","いきものがかり","きただにひろし","キタニタツヤ","サカナクション","新里宏太","藍井エイル"
   ]
 };
 

@@ -19,7 +19,7 @@
     finally{clearTimeout(timer);}
   }
   class DualAudioQuestion {
-    constructor({primary,interference,primaryOffset=0,interferenceOffset=0,volume=.8,delay=2,ratio=.7,onInterference=()=>{},onError=()=>{}}){
+    constructor({primary,interference,primaryOffset=0,interferenceOffset=0,volume=.8,delay=2.5,ratio=.5,onInterference=()=>{},onError=()=>{}}){
       Object.assign(this,{primary,interference,primaryOffset,interferenceOffset,delay,ratio,onInterference,onError});
       this.stopped=false;this.triggered=false;this.timer=null;
       this.setVolume(volume);

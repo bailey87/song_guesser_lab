@@ -1,0 +1,250 @@
+/* Real Miyazaki film themes; canonical common titles, not invented aliases.
+ * workKey keeps known same-theme arrangements out of the same question.
+ * Source catalog: data/miyazaki-themes.json. Only question-bank entries are played.
+ */
+window.GHIBLI_THEMES = [
+  {
+    "title": "風之谷的娜烏西卡",
+    "artist": "久石讓",
+    "film": "風之谷",
+    "questionId": "add_jp_hisaishi_881802224",
+    "storeTitle": "風之谷的娜烏西卡",
+    "source": "https://music.apple.com/tw/album/%E9%A2%A8%E4%B9%8B%E8%B0%B7%E7%9A%84%E5%A8%9C%E7%83%8F%E8%A5%BF%E5%8D%A1/881802202?i=881802224&uo=4",
+    "workKey": "風之谷的娜烏西卡"
+  },
+  {
+    "title": "那個夏天",
+    "artist": "久石讓",
+    "film": "神隱少女",
+    "questionId": "add_jp_hisaishi_883501723",
+    "storeTitle": "那個夏天",
+    "source": "https://music.apple.com/tw/album/%E9%82%A3%E5%80%8B%E5%A4%8F%E5%A4%A9/883501721?i=883501723&uo=4",
+    "workKey": "spirited-away-summer"
+  },
+  {
+    "title": "人生的旋轉木馬",
+    "artist": "久石讓",
+    "film": "霍爾的移動城堡",
+    "questionId": "add_jp_hisaishi_883513433",
+    "storeTitle": "Opening - 人生的旋轉木馬",
+    "source": "https://music.apple.com/tw/album/opening-%E4%BA%BA%E7%94%9F%E7%9A%84%E6%97%8B%E8%BD%89%E6%9C%A8%E9%A6%AC/883513360?i=883513433&uo=4",
+    "workKey": "人生的旋轉木馬"
+  },
+  {
+    "title": "風之通道",
+    "artist": "久石讓",
+    "film": "龍貓",
+    "questionId": "add_jp_hisaishi_882410536",
+    "storeTitle": "風之通道",
+    "source": "https://music.apple.com/tw/album/%E9%A2%A8%E4%B9%8B%E9%80%9A%E9%81%93/882410520?i=882410536&uo=4",
+    "workKey": "風之通道"
+  },
+  {
+    "title": "隔壁的龍貓",
+    "artist": "久石讓",
+    "film": "龍貓",
+    "questionId": "add_jp_hisaishi_882410542",
+    "storeTitle": "隔壁的龍貓",
+    "source": "https://music.apple.com/tw/album/%E9%9A%94%E5%A3%81%E7%9A%84%E9%BE%8D%E8%B2%93/882410520?i=882410542&uo=4",
+    "workKey": "隔壁的龍貓"
+  },
+  {
+    "title": "天空之城",
+    "artist": "久石讓",
+    "film": "天空之城",
+    "questionId": "add_jp_hisaishi_882407940",
+    "storeTitle": "伴隨著你",
+    "source": "https://music.apple.com/tw/album/%E4%BC%B4%E9%9A%A8%E8%91%97%E4%BD%A0/882407903?i=882407940&uo=4",
+    "workKey": "castle-carrying-you"
+  },
+  {
+    "title": "魔法公主",
+    "artist": "久石讓",
+    "film": "魔法公主",
+    "questionId": "add_jp_hisaishi_883501071",
+    "storeTitle": "魔法公主 (演奏版)",
+    "source": "https://music.apple.com/tw/album/%E9%AD%94%E6%B3%95%E5%85%AC%E4%B8%BB-%E6%BC%94%E5%A5%8F%E7%89%88/883500999?i=883501071&uo=4",
+    "workKey": "魔法公主"
+  },
+  {
+    "title": "阿席達卡與小桑",
+    "artist": "久石讓",
+    "film": "魔法公主",
+    "questionId": "add_jp_hisaishi_883501267",
+    "storeTitle": "阿席達卡與小桑",
+    "source": "https://music.apple.com/tw/album/%E9%98%BF%E5%B8%AD%E9%81%94%E5%8D%A1%E8%88%87%E5%B0%8F%E6%A1%91/883500999?i=883501267&uo=4",
+    "workKey": "阿席達卡與小桑"
+  },
+  {
+    "title": "阿席達卡傳奇",
+    "artist": "久石讓",
+    "film": "魔法公主",
+    "questionId": "add_jp_hisaishi_883501052",
+    "storeTitle": "阿席達卡傳奇",
+    "source": "https://music.apple.com/tw/album/%E9%98%BF%E5%B8%AD%E9%81%94%E5%8D%A1%E5%82%B3%E5%A5%87/883500999?i=883501052&uo=4",
+    "workKey": "阿席達卡傳奇"
+  },
+  {
+    "title": "崖上的波妞",
+    "artist": "久石讓",
+    "film": "崖上的波妞",
+    "questionId": "add_jp_hisaishi_885295070",
+    "storeTitle": "崖上的波妞 (電影版)",
+    "source": "https://music.apple.com/tw/album/%E5%B4%96%E4%B8%8A%E7%9A%84%E6%B3%A2%E5%A6%9E-%E9%9B%BB%E5%BD%B1%E7%89%88/885295013?i=885295070&uo=4",
+    "workKey": "崖上的波妞"
+  },
+  {
+    "title": "娜烏西卡安魂曲",
+    "artist": "久石讓",
+    "film": "風之谷",
+    "questionId": "add_jp_hisaishi_881802375",
+    "storeTitle": "娜烏西卡‧安魂曲",
+    "source": "https://music.apple.com/tw/album/%E5%A8%9C%E7%83%8F%E8%A5%BF%E5%8D%A1-%E5%AE%89%E9%AD%82%E6%9B%B2/881802202?i=881802375&uo=4",
+    "workKey": "娜烏西卡安魂曲"
+  },
+  {
+    "title": "第六號車站",
+    "artist": "久石讓",
+    "film": "神隱少女",
+    "questionId": "add_jp_hisaishi_883501738",
+    "storeTitle": "6番目の駅",
+    "source": "https://music.apple.com/tw/album/6%E7%95%AA%E7%9B%AE%E3%81%AE%E9%A7%85/883501721?i=883501738&uo=4",
+    "workKey": "第六號車站"
+  },
+  {
+    "title": "白龍少年",
+    "artist": "久石讓",
+    "film": "神隱少女",
+    "questionId": "add_jp_hisaishi_883501727",
+    "storeTitle": "白龍少年",
+    "source": "https://music.apple.com/tw/album/%E7%99%BD%E9%BE%8D%E5%B0%91%E5%B9%B4/883501721?i=883501727&uo=4",
+    "workKey": "白龍少年"
+  },
+  {
+    "title": "能看見海的街道",
+    "artist": "久石讓",
+    "film": "魔女宅急便",
+    "questionId": "add_jp_hisaishi_882658780",
+    "storeTitle": "能看見海的街道",
+    "source": "https://music.apple.com/tw/album/%E8%83%BD%E7%9C%8B%E8%A6%8B%E6%B5%B7%E7%9A%84%E8%A1%97%E9%81%93/882658777?i=882658780&uo=4",
+    "workKey": "能看見海的街道"
+  },
+  {
+    "title": "旅路～夢中飛行～",
+    "artist": "久石讓",
+    "film": "風起",
+    "questionId": "add_jp_hisaishi_1680459434",
+    "storeTitle": "A Journey (A Dream of Flight) [From \"The Wind Rises\"]",
+    "source": "https://music.apple.com/tw/album/a-journey-a-dream-of-flight-from-the-wind-rises/1680459073?i=1680459434&uo=4",
+    "workKey": "旅路～夢中飛行～"
+  },
+  {
+    "title": "從天而降的少女",
+    "artist": "久石讓",
+    "film": "天空之城",
+    "questionId": "add_jp_hisaishi_882407916",
+    "storeTitle": "從天而降的少女",
+    "source": "https://music.apple.com/tw/album/%E5%BE%9E%E5%A4%A9%E8%80%8C%E9%99%8D%E7%9A%84%E5%B0%91%E5%A5%B3/882407903?i=882407916&uo=4",
+    "workKey": "castle-carrying-you"
+  },
+  {
+    "title": "散步",
+    "artist": "久石讓",
+    "film": "龍貓",
+    "questionId": "add_jp_hisaishi_882410524",
+    "storeTitle": "散步",
+    "source": "https://music.apple.com/tw/album/%E6%95%A3%E6%AD%A5/882410520?i=882410524&uo=4",
+    "workKey": "散步"
+  },
+  {
+    "title": "重新開始",
+    "artist": "久石讓",
+    "film": "神隱少女",
+    "questionId": "add_jp_hisaishi_883501745",
+    "storeTitle": "重新開始",
+    "source": "https://music.apple.com/tw/album/%E9%87%8D%E6%96%B0%E9%96%8B%E5%A7%8B/883501721?i=883501745&uo=4",
+    "workKey": "spirited-away-summer"
+  },
+  {
+    "title": "媽媽的掃帚",
+    "artist": "久石讓",
+    "film": "魔女宅急便",
+    "questionId": "add_jp_hisaishi_1680459428",
+    "storeTitle": "Mother’s Broom (From \"Kiki's Delivery Service\")",
+    "source": "https://music.apple.com/tw/album/mothers-broom-from-kikis-delivery-service/1680459073?i=1680459428&uo=4",
+    "workKey": "媽媽的掃帚"
+  },
+  {
+    "title": "飛向亞德里亞海",
+    "artist": "久石讓",
+    "film": "紅豬",
+    "questionId": "add_jp_hisaishi_883013100",
+    "storeTitle": "飛向亞德里亞海",
+    "source": "https://music.apple.com/tw/album/%E9%A3%9B%E5%90%91%E4%BA%9E%E5%BE%B7%E9%87%8C%E4%BA%9E%E6%B5%B7/883013075?i=883013100&uo=4",
+    "workKey": "飛向亞德里亞海"
+  },
+  {
+    "title": "永遠同在",
+    "artist": "木村弓",
+    "film": "神隱少女",
+    "storeTitle": "いつも何度でも",
+    "source": "https://music.apple.com/jp/album/%E3%81%84%E3%81%A4%E3%82%82%E4%BD%95%E5%BA%A6%E3%81%A7%E3%82%82/668520226?i=668520684&uo=4",
+    "workKey": "永遠同在"
+  },
+  {
+    "title": "口紅的留言",
+    "artist": "荒井由實",
+    "film": "魔女宅急便",
+    "storeTitle": "ルージュの伝言",
+    "source": "https://music.apple.com/jp/album/%E3%83%AB%E3%83%BC%E3%82%B8%E3%83%A5%E3%81%AE%E4%BC%9D%E8%A8%80/1436010473?i=1436010692&uo=4",
+    "workKey": "口紅的留言"
+  },
+  {
+    "title": "被溫柔包圍",
+    "artist": "荒井由實",
+    "film": "魔女宅急便",
+    "storeTitle": "やさしさに包まれたなら",
+    "source": "https://music.apple.com/jp/album/%E3%82%84%E3%81%95%E3%81%97%E3%81%95%E3%81%AB%E5%8C%85%E3%81%BE%E3%82%8C%E3%81%9F%E3%81%AA%E3%82%89/1436010441?i=1436010457&uo=4",
+    "workKey": "被溫柔包圍"
+  },
+  {
+    "title": "飛機雲",
+    "artist": "荒井由實",
+    "film": "風起",
+    "storeTitle": "ひこうき雲",
+    "source": "https://music.apple.com/jp/album/%E3%81%B2%E3%81%93%E3%81%86%E3%81%8D%E9%9B%B2/1436009088?i=1436009093&uo=4",
+    "workKey": "飛機雲"
+  },
+  {
+    "title": "世界的約定",
+    "artist": "倍賞千惠子",
+    "film": "霍爾的移動城堡",
+    "storeTitle": "世界の約束(ハウルの動く城)",
+    "source": "https://music.apple.com/jp/album/%E4%B8%96%E7%95%8C%E3%81%AE%E7%B4%84%E6%9D%9F-%E3%83%8F%E3%82%A6%E3%83%AB%E3%81%AE%E5%8B%95%E3%81%8F%E5%9F%8E/669344252?i=669344309&uo=4",
+    "workKey": "世界的約定"
+  },
+  {
+    "title": "地球儀",
+    "artist": "米津玄師",
+    "film": "蒼鷺與少年",
+    "storeTitle": "地球儀 - Spinning Globe",
+    "source": "https://music.apple.com/jp/album/%E5%9C%B0%E7%90%83%E5%84%80-spinning-globe/1695666889?i=1695666895&uo=4",
+    "workKey": "地球儀"
+  },
+  {
+    "title": "海的媽媽",
+    "artist": "久石讓",
+    "film": "崖上的波妞",
+    "storeTitle": "Mother Sea (From \"Ponyo on the Cliff by the Sea\")",
+    "source": "https://music.apple.com/tw/album/mother-sea-from-ponyo-on-the-cliff-by-the-sea/1680459073?i=1680459618&uo=4",
+    "workKey": "海的媽媽"
+  },
+  {
+    "title": "逝去的往日",
+    "artist": "久石讓",
+    "film": "紅豬",
+    "storeTitle": "逝去的往日",
+    "source": "https://music.apple.com/tw/album/%E9%80%9D%E5%8E%BB%E7%9A%84%E5%BE%80%E6%97%A5/883013075?i=883013090&uo=4",
+    "workKey": "逝去的往日"
+  }
+];
