@@ -207,6 +207,8 @@ input[type=text]:focus{outline:0;border-bottom-color:var(--foam)}
   color:rgba(207,202,240,.38);font-weight:var(--w-quiet);
 }
 
+.credit a{color:var(--foam);text-underline-offset:3px}
+
 /* ═══════════ LOADING ═══════════ */
 #screen-load{align-items:center;justify-content:center;text-align:center;gap:var(--s5)}
 .spin{
@@ -286,6 +288,7 @@ input[type=text]:focus{outline:0;border-bottom-color:var(--foam)}
 .grid .opt:nth-child(9){animation-delay:200ms}
 
 .hud-bot{
+  flex-wrap:wrap;gap:var(--s2);
   flex:none;display:flex;justify-content:space-between;align-items:baseline;gap:var(--s4);
   font-size:var(--t-small);color:var(--dim);
 }
@@ -424,6 +427,7 @@ input[type=text]:focus{outline:0;border-bottom-color:var(--foam)}
   color:var(--dim);font-weight:var(--w-quiet);
   overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
 }
+#btn-audio-retry{color:var(--bottle);border:1px solid var(--line-2);border-radius:8px;padding:8px}
 .hud-bot em{font-style:normal;color:var(--dim);font-weight:var(--w-quiet)}
 
 /* ═══════════ STAGE MODE: clear popup ═══════════
@@ -547,6 +551,8 @@ input[type=text]:focus{outline:0;border-bottom-color:var(--foam)}
     </button>
   </div>
 
+  <div class="credit" id="demo-entry"><a href="demo.html">試玩雙曲干擾 Demo</a></div>
+  <div class="credit" id="demo-links" hidden><a href="demo.html">切換示範</a> · <a href="index.html">回一般模式</a></div>
   <div class="credit" id="library-info"></div><div class="credit">音源：Apple Music 官方試聽</div>
 </div>
 
@@ -588,7 +594,7 @@ input[type=text]:focus{outline:0;border-bottom-color:var(--foam)}
   </div>
   <div class="grid" id="grid"></div>
   <div class="hud-bot">
-    <span id="playmeta"></span>
+    <span id="playmeta"></span><button type="button" id="btn-audio-retry" hidden>重試音訊</button>
     <span>目前總分 <b id="running">0</b><em id="goal"></em></span>
   </div>
 </div>
@@ -635,8 +641,13 @@ input[type=text]:focus{outline:0;border-bottom-color:var(--foam)}
 <script src="previews.js"></script>
 <script src="song-rotation.js"></script>
 <script src="named-decoys.js"></script>
+<script src="interference-options.js"></script>
+<script src="dual-audio.js"></script>
 <script>
 /* Static single-player game. Audio streams from Apple; progress stays local. */
+
+const demoParams = new URLSearchParams(location.search);
+const DEMO = { enabled: demoParams.get('interference') === '1', hisaishi: demoParams.get('interference') === '1' && demoParams.get('pool') === 'hisaishi' };
 
 const CONFIG = {
   questionCount: 10,      // questions per round
@@ -658,8 +669,8 @@ const STAGE_QUESTIONS = 10;
 const STAGES = [4000, 5000, 6000, 7000, 8000, 9000].map(need => ({
   need, floor: CONFIG.floor
 }));
-function stageHudLabel(){ return '全語系開放'; }
-function stagePool(){ return window.SONGS || []; }
+function stageHudLabel(){ return DEMO.hisaishi ? '久石讓干擾專場' : '全語系開放'; }
+function stagePool(){ return (window.SONGS || []).filter(s => !DEMO.hisaishi || s.artist === '久石讓'); }
 
 // Rules for the current round, filled in per mode. The game loop reads this, not CONFIG.
 const R = { questionCount: CONFIG.questionCount, timeLimit: CONFIG.timeLimit };
@@ -708,7 +719,10 @@ function setVolume(v){
   try{ localStorage.setItem(VOL_KEY, String(volume)); }catch(e){}
 
   // applies live to prepared clips and to the synth fallback
-  (G.questions || []).forEach(q => { if(q.audio && q.audio.el) q.audio.el.volume = volume; });
+  (G.questions || []).forEach(q => {
+    if(q.audio?.el) q.audio.el.volume = volume;
+    if(q.interference?.audio?.el) q.interference.audio.el.volume = volume * .7;
+  });
   if(G.clip && G.clip.setVolume) G.clip.setVolume(volume);
 
   const pct = Math.round(volume * 100);
@@ -749,7 +763,9 @@ function probeAudio(src, timeoutMs){
 let hasLocalAudio = null;   // null = untried, false = audio/ is empty, stop asking
 
 async function prepareClip(q, remoteTimeout = 12000){
-  if(q.audio !== undefined) return q.audio;   // already prepared, or known to have none
+  if(q.audio !== undefined) return q.audio;
+  if(q.audioPromise) return q.audioPromise;
+  q.audioPromise = (async () => {
   const song = q.song;
 
   let el = null, source = null, offset = 0;
@@ -771,6 +787,9 @@ async function prepareClip(q, remoteTimeout = 12000){
   if(el){ el.volume = volume; el.preload = 'auto'; try{ el.load(); }catch(e){} }   // buffer ahead only once chosen
   q.audio = el ? { el, source, offset } : null;
   return q.audio;
+  })();
+  try{ return await q.audioPromise; }
+  finally{ delete q.audioPromise; }
 }
 
 function note(ctx, dest, freq, at, dur, type, peak){
@@ -843,7 +862,8 @@ function playClip(q){
       q.audio.el.currentTime = q.audio.offset || 0;
       const p = q.audio.el.play();
       if(p && p.catch) p.catch(() => onPlayBlocked(q));
-      return { stop(){ try{ q.audio.el.pause(); }catch(e){} } };
+      const el = q.audio.el;
+      return { stop(){ try{ el.pause(); }catch(e){} } };
     }catch(e){ onPlayBlocked(q); }
   }
   return synthClip(q.song, CONFIG.clipSeconds);
@@ -851,7 +871,7 @@ function playClip(q){
 
 /* ---------- Personal records (local device only) ---------- */
 const Store = {
-  KEY: 'pmsg_scores_full_library_v2',
+  KEY: DEMO.enabled ? 'pmsg_scores_interference_demo_v1' : 'pmsg_scores_full_library_v2',
 
   all(){
     try{ return JSON.parse(localStorage.getItem(this.KEY)) || []; }
@@ -872,7 +892,7 @@ const Store = {
   plays(){ return this.all().length; },
 
   // stage-mode record: only ever goes up
-  STAGE_KEY: 'pmsg_stage_full_library_v2',
+  STAGE_KEY: DEMO.enabled ? 'pmsg_stage_interference_demo_v1' : 'pmsg_stage_full_library_v2',
   bestStage(){
     try{ return Number(localStorage.getItem(this.STAGE_KEY)) || 0; }catch(e){ return 0; }
   },
@@ -924,7 +944,15 @@ function buildQuestions(songs, floor){
   let lastIndex = -1;
 
   return answers.map(answer => {
-    const options = [answer];
+    let options, interferenceSong = null;
+    if(DEMO.enabled){
+      ({ options, interferenceSong } = InterferenceOptions.build(answer, {
+        songs: window.SONGS, decoys: window.DECOYS || [], previews: window.SONG_PREVIEWS || {},
+        namedDecoys: window.NAMED_DECOYS || {}, shuffle, titleKey,
+        maxSameArtist: CONFIG.maxSameArtist
+      }));
+    }else{
+    options = [answer];
     const usedTitle = new Set([titleKey(answer.title)]);
     const byArtist = { [answer.artist]: 1 };
 
@@ -958,6 +986,8 @@ function buildQuestions(songs, floor){
       }
     }
 
+    }
+
     const grid = shuffle(options);
     // never put the answer in the same cell twice running
     let idx = grid.indexOf(answer);
@@ -969,7 +999,7 @@ function buildQuestions(songs, floor){
     lastIndex = idx;
     // audio is deliberately left unset: prepareClip reads undefined as not-yet-tried,
     // whereas null would mean known-to-have-no-source and skip probing
-    return { song: answer, options: grid };
+    return { song: answer, options: grid, ...(interferenceSong ? { interference: { song: interferenceSong } } : {}) };
   });
 }
 
@@ -1127,7 +1157,7 @@ async function playRound(){
     $('goal').textContent = ` / ${STAGES[G.stage - 1].need.toLocaleString()}`;
   }else{
     Object.assign(R, { questionCount: CONFIG.questionCount, timeLimit: CONFIG.timeLimit });
-    G.questions = buildQuestions(window.SONGS, CONFIG.floor);
+    G.questions = buildQuestions(stagePool(), CONFIG.floor);
     $('goal').textContent = '';
   }
   $('hud-stage').hidden = G.mode !== 'stage';
@@ -1167,12 +1197,27 @@ async function nextQuestion(){
     grid.appendChild(b);
   });
 
-  if(q.audio === undefined) $('playmeta').textContent = '載入中⋯';   // only visible when the prefetch has not finished
-  await prepareClip(q);
-  $('playmeta').textContent = q.audio ? '' : '示範音 · 這首找不到音源';
-
+  $('btn-audio-retry').hidden = true;
   if(G.clip) G.clip.stop();
-  G.clip = playClip(q);
+  if(DEMO.enabled){
+    $('playmeta').textContent = '正在準備兩首音訊⋯';
+    await Promise.all([prepareClip(q), prepareClip(q.interference)]);
+    if(!q.audio || !q.interference.audio){ demoAudioFailure('兩首音源未載入完成，請重試本題'); return; }
+    G.clip = new DualAudioQuestion({
+      primary: q.audio.el, interference: q.interference.audio.el,
+      primaryOffset: q.audio.offset, interferenceOffset: q.interference.audio.offset, volume,
+      onInterference: () => { if(!G.locked) $('playmeta').textContent = '干擾音已加入 · 請選最先播放的歌曲'; },
+      onError: () => demoAudioFailure('干擾音無法播放，請重試本題')
+    });
+    try{ await G.clip.start(); }
+    catch(e){ demoAudioFailure('音訊無法開始播放，請重試本題'); return; }
+    $('playmeta').textContent = '請記住原曲 · 播放滿兩秒加入干擾';
+  }else{
+    if(q.audio === undefined) $('playmeta').textContent = '載入中⋯';
+    await prepareClip(q);
+    $('playmeta').textContent = q.audio ? '' : '示範音 · 這首找不到音源';
+    G.clip = playClip(q);
+  }
 
   songRotation.record(q.song.id, window.SONGS);
   G.locked = false;
@@ -1181,8 +1226,27 @@ async function nextQuestion(){
 
   // prefetch the next clip while this one plays, so questions do not stall
   const nx = G.questions[G.index + 1];
-  if(nx) prepareClip(nx);
+  if(nx){
+    prepareClip(nx);
+    if(DEMO.enabled) prepareClip(nx.interference);
+  }
 }
+
+function demoAudioFailure(message){
+  G.locked = true;
+  cancelAnimationFrame(G.timer);
+  if(G.clip) G.clip.stop();
+  $('playmeta').textContent = message;
+  $('btn-audio-retry').hidden = false;
+}
+$('btn-audio-retry').addEventListener('click', () => {
+  const q = G.questions[G.index];
+  for(const track of [q, q.interference]){
+    if(track?.audio?.el) track.audio.el.pause();
+    if(track) track.audio = undefined;
+  }
+  nextQuestion();
+});
 
 function tick(){
   const left = Math.max(0, (G.deadline - performance.now()) / 1000);
@@ -1463,7 +1527,14 @@ document.addEventListener('keydown', e => {
 /* ---------- boot ---------- */
 setVolume(volume);   // apply the remembered volume to the slider and icon
 refreshStartBtn();
-$('library-info').textContent = `${window.SONGS.length} 首歌曲 · 全語系開放 · 此裝置跨場避重`;
+$('library-info').textContent = `${stagePool().length} 首歌曲 · ${DEMO.hisaishi ? '久石讓專場' : '全語系開放'} · 此裝置跨場避重`;
+if(DEMO.enabled){
+  document.title = '雙曲干擾 Demo · 金曲猜歌王';
+  $('demo-links').hidden = false;
+  $('demo-entry').hidden = true;
+  document.querySelector('.eyebrow').textContent = '雙曲干擾 DEMO';
+  document.querySelector('.slogan').textContent = '第一首才是正解。原曲播放兩秒後，加入 70% 音量的干擾曲。';
+}
 </script>
 </body>
 </html>
